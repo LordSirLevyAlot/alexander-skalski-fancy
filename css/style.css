@@ -20,16 +20,18 @@ nav{
 }
 
 
-div{
-    text-align: center;
-    top:50%;
+.navItem{
+    display:flex;
+    /*align-content: center;*/
+    justify-content: center;
     height:5rem;
     border-bottom-right-radius:0;
     border-bottom-left-radius:0;
+    
     background-image: linear-gradient(to bottom, rgb(241, 238, 238), rgb(54, 52, 52));
     transition:height 1s, border-bottom-right-radius 1s, border-bottom-left-radius 1s, background-color 1s, color 1s;
 }
-div:hover{
+.navItem:hover{
     border-bottom-right-radius: 1rem;
     border-bottom-left-radius: 1rem;
     background-image: linear-gradient(to bottom, rgb(241, 238, 238), rgb(54, 52, 52));
@@ -41,7 +43,7 @@ div:hover{
         grid-template-columns:1fr;
         background-image: linear-gradient(to bottom, rgb(241, 238, 238), rgb(54, 52, 52));
     }
-    div{
+    .navItem{
         background-image: none;
     }
 }
