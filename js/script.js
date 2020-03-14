@@ -8,3 +8,4 @@ navItems[1].onmouseenter = function(){
 navItems[1].onmouseleave = function(){
     aboutTitle.innerHTML = 'About <i class="fas fa-angle-double-down"></i>';
 };
+
