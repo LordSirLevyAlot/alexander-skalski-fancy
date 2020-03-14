@@ -5,9 +5,7 @@
 html{
     overflow:hidden;
 }
-.fas{
-    font-size: 1.5rem;
-}
+
 body{
     background-color: rgb(241, 238, 238);
     font-size: 2rem;
@@ -17,28 +15,36 @@ body{
     overflow-x: hidden;
     width:100vw;
     height:100vh;
+
+    display:grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 10rem, 5rem, minmax(1rem, 7rem);
 }
 .background{
-
     z-index:-1;
     width:100vw;
     position:absolute;
     transform-style:preserve-3d;
-    transform: translateZ(-8px) scale(16);
+    transform: translateZ(-1px) scale(2);
     box-sizing: border-box;
-    top:0;
-    left:0;
+    vertical-align: top;
+    background-position: top;
+}
+.fas{
+    font-size: 1.5rem;
+    transition: transform 1s;
 }
 header{
     background-color:rgba(241, 238, 238, 0.8);
 }
 
 nav{
-    position:sticky;
+    position: sticky;
+    top: 0;
+    z-index:2;
     width:100%;
     display:grid;
     grid-template-columns: repeat(3, 1fr);
-    height:18rem;
 }
 .aboutList{
     display:none;
@@ -66,11 +72,17 @@ nav{
     height:12rem;
     padding-top:7%;
     color:white;
+    background-image: linear-gradient(to bottom, rgba(241, 238, 238, 0.8), rgb(27, 26, 26));
 }
 .navItem:hover ul{
     opacity:1;
     font-size: inherit;
 }
+.navItem:hover .aboutTitle .fas{
+    transform:rotate(180deg);
+}
+
+
 
 main{
     display:grid;
