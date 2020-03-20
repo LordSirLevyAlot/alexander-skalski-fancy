@@ -32,9 +32,18 @@ body{
     transform-style:preserve-3d;
     transform: translateZ(-1px) scale(2);
     box-sizing: border-box;
-    /*vertical-align: top;
-    background-position: top;*/
+    vertical-align: top;
+    background-position: top;
 }
+#andra{
+    margin-top:500vh;
+}
+#mellan{
+    height:100vh;
+    margin-top:320vh;
+    background-image: linear-gradient(to bottom, rgba(92, 79, 79, 0), rgb(0, 0, 0), rgb(0, 0, 0), rgb(59, 57, 57), rgba(0,0,0,0));
+}
+
 .fas{
     font-size: 1.5rem;
     transition: transform 1s;
