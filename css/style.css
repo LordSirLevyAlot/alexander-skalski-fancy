@@ -87,14 +87,13 @@ nav{
     background-image: linear-gradient(to bottom, rgba(241, 238, 238, 0.8), rgb(27, 26, 26));
 }
 .aboutList{
-    /*display:none;*/
     text-align: start;
     opacity:0;
     font-size: 0.1rem;
     transition: opacity 1s, font-size 1s;
     list-style-position: inside;
     padding-left:3rem;
-    display:block;
+  
 }
 .navItem:hover .aboutList{
     opacity:1;
@@ -104,8 +103,19 @@ nav{
     font-size: 1.5rem;
     transition: transform 1s;
 }
-.navItem:hover .aboutTitle .fas{
+.navItem:hover .navTitle .fas{
     transform:rotate(180deg);
+}
+.navTitle{
+    font-size:100%;
+    transition:font-size 1s;
+}
+/*Home ska bli större än de andra*/
+.navItem:nth-child(1):hover .navTitle{
+    font-size: 200%;
+}
+.navItem:hover .navTitle{
+    font-size: 120%;
 }
 a{
     color:#dbdb94;
@@ -117,6 +127,7 @@ a:hover{
 li>a:hover{
     margin-left:1rem;
 }
+
 
 
 
