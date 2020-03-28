@@ -18,6 +18,7 @@ body::-webkit-scrollbar-thumb{
 body{
     background-color: rgb(53, 52, 52);
     font-size: 2rem;
+    font-family: 'EB Garamond', serif;
     perspective:1px;
     transform-style:preserve-3d;
     overflow-y: auto;
@@ -25,6 +26,11 @@ body{
     width:100vw;
     height:100vh;
 }
+h1, h2, h3{
+    font-family: 'Bebas Neue', cursive;
+}
+
+
 .background{
     z-index:-1;
     width:100vw;
@@ -35,57 +41,33 @@ body{
     vertical-align: top;
     background-position: top;
 }
-#andra{
-    margin-top:250%;
-}
 #mellan{
-    height:100vh;
+    height:120vh;
     margin-top:160%;
     background-image: linear-gradient(to bottom, rgba(92, 79, 79, 0), rgb(53, 52, 52), rgb(53, 52, 52), rgb(53, 52, 52));
-
 }
 
-a{
-    color:#dbdb94;
-    transition:margin 1s;
-}
-a:hover{
-    color:#dada68;
-}
-li>a:hover{
-    margin-left:1rem;
-}
 
-.fas{
-    font-size: 1.5rem;
-    transition: transform 1s;
-}
+
 header{
     background-color:rgba(241, 238, 238, 0.8);
     position:relative;
     padding-left:5vw;
+    display:flex;
+    flex-direction: row;
 }
+
+
 
 nav{
     position: sticky;
     top: 0;
-    z-index:2;
+    z-index:10;
     width:100vw;
     display:grid;
     grid-template-columns: repeat(3, 1fr);
     height:12rem;
 }
-.aboutList{
-    /*display:none;*/
-    text-align: start;
-    opacity:0;
-    font-size: 0.1rem;
-    transition: opacity 1s, font-size 1s;
-    list-style-position: inside;
-    padding-left:3rem;
-    display:block;
-}
-
 .navItem{
     position:sticky;
     text-align: center;
@@ -104,18 +86,43 @@ nav{
     color:white;
     background-image: linear-gradient(to bottom, rgba(241, 238, 238, 0.8), rgb(27, 26, 26));
 }
-.navItem:hover ul{
+.aboutList{
+    /*display:none;*/
+    text-align: start;
+    opacity:0;
+    font-size: 0.1rem;
+    transition: opacity 1s, font-size 1s;
+    list-style-position: inside;
+    padding-left:3rem;
+    display:block;
+}
+.navItem:hover .aboutList{
     opacity:1;
     font-size: inherit;
+}
+.fas{
+    font-size: 1.5rem;
+    transition: transform 1s;
 }
 .navItem:hover .aboutTitle .fas{
     transform:rotate(180deg);
 }
+a{
+    color:#dbdb94;
+    transition:margin 1s;
+}
+a:hover{
+    color:#dada68;
+}
+li>a:hover{
+    margin-left:1rem;
+}
+
 
 
 main{
     display:grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(5, 1fr);
     top:20rem;
 }
 section{
@@ -123,8 +130,9 @@ section{
     text-align:center;
     padding: 10%;
     margin:10%;
-    -ms-grid-column-span: 2;
+    /*-ms-grid-column-span: 2;*/
 }
+
 
 .dark{
     background-color: rgba(0, 0, 0, 0.8);
@@ -141,29 +149,52 @@ section{
 
 
 .left{
-    grid-column:1/2;
-}
-.midLeft{
     grid-column:1/3;
 }
-.mid{
-    grid-column:2/4;
+.midLeft{
+    grid-column:1/4;
 }
-.midRight{
+.mid{
     grid-column:2/5;
 }
+.midRight{
+    grid-column:3/6;
+}
 .right{
-    grid-column:3/5;
+    grid-column:4/6;
 }
 .fill{
-    grid-column:1/5;
+    grid-column:1/6;
     margin:10% 0;
 }
-
+.image{
+    padding:3%;
+}
+.image img{
+    width:100%;
+    height:100%;
+}
 .multiple{
     display:grid;
-    grid-template-columns: 1fr 4fr;
+    grid-template-columns: 1fr 2fr;
 }
+.unsaturate{
+    filter:saturate(0);
+}
+
+.multiple *{
+    padding:5%;
+    border-style: solid;
+    margin:5%;
+}
+.multiple img{
+    padding:5%;
+    border-style: none;
+    margin:5%;
+}
+
+
+
 
 footer{
     background-image:linear-gradient(to bottom, rgba(241, 238, 238, 0.8), rgb(27, 26, 26));
@@ -175,22 +206,37 @@ footer{
     color:white;
     padding:1rem;
     font-size: 1.2rem;
-
     position:absolute;
     margin-bottom:0;
 }
 
+
+/*CEO*/
 .bruce{
     width:100%;
+}
+
+/*Founder*/
+.container{
+    display:block;
+    position:relative;
+    padding:0;
+    z-index:2;
+    top:0;
+}
+.container section{
+    position:relative;
+    margin:0;
+    padding:10%;
+    width:80%;
+    height:80vh;
+    border-radius: 0;
 }
 
 @media (max-width:1000px){
     body::-webkit-scrollbar{
         width:0.8rem;
     }
-    /*#andra{
-        margin-top:150vh;
-    }*/
     #mellan{
         height:20vh;
         margin-top:180%;
