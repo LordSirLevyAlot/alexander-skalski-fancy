@@ -12,6 +12,7 @@ function påbörjaTimeline(){/*
     knappHållare.style.height = window.innerHeight + "px";
     console.log(window.innerHeight);*/
 }
+
 let counter = 0;
 function nästa(){
     counter++;
@@ -39,6 +40,7 @@ window.addEventListener('wheel', event => {
     const delta = Math.sign(event.deltaY);
     console.info(delta);
     blah+=delta;
+    //slides[counter].style.top = blah + "vh";
     if(blah%10 == 0){
 
         if(delta>0){

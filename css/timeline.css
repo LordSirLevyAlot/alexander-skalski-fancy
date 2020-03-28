@@ -20,6 +20,7 @@ article{
     height:100vh;
 }
 .start{
+    z-index:0;
     height:30rem;
     text-align: center;
     padding-top:10%;
