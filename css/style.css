@@ -130,6 +130,8 @@ section{
     text-align:center;
     padding: 10%;
     margin:10%;
+    opacity:0;
+    transition:opacity 1s;
     /*-ms-grid-column-span: 2;*/
 }
 
@@ -209,6 +211,36 @@ footer{
     position:absolute;
     margin-bottom:0;
 }
+
+
+#referenceWrapper #batmanReference{
+    transform:rotate(-20deg);
+    animation: referensRotation 5s ease-out;
+}
+#referenceWrapper{
+    transform:translateX(300%);
+    position:fixed;
+    margin:0;
+    bottom:-300%;
+    animation: referensRörelse 5s linear;
+}/*
+@keyframes referensRörelse{
+    0%{transform:    translateX(300%)  translateY(-20%)}
+    20%{transform:   translateX(200%)  translateY(-50%)}
+    40%{transform:    translateX(150%)  translateY(-70%)}
+    60%{transform:   translateX(200%)  translateY(-120%)}
+    80%{transform:   translateX(100%)  translateY(-150%)}
+    100%{transform:  translateX(-100%) translateY(-700%)}
+    
+}   
+@keyframes referensRotation{
+    0%{transform:   rotate(-20deg) }
+    20%{transform:  rotate(-20deg) }
+    40%{transform:  rotate(20deg)  }
+    60%{transform:  rotate(30deg)  }
+    80%{transform:  rotate(-10deg) }
+    100%{transform: rotate(-40deg) }
+}*/
 
 
 /*CEO*/
