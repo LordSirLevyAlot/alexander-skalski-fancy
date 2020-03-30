@@ -1,66 +1,81 @@
 let startKnapp = document.getElementById("knapp");
-let navbar = document.querySelector("nav");
-let header = document.querySelector("header");
 let knappHållare = document.getElementById("knappHållare");
 let footer = document.querySelector("footer");
-startKnapp.addEventListener('click', påbörjaTimeline);
+
 
 let slides = document.getElementsByClassName("slide");
 
+let counter = 1;
+let hundra = 100;
+
+
+let fortsätt= document.getElementsByClassName("fa-chevron-down");
+let fårGåVidare = false;
+for (let index = 0; index < fortsätt.length; index++) {
+    fortsätt[index].addEventListener('click', ()=>{
+        if(fårGåVidare===false){
+            return;
+        }
+        counter++;
+        hundra = 100;
+        fårGåVidare=false;
+    });
+    
+}
+
+startKnapp.addEventListener('click', påbörjaTimeline);
 function påbörjaTimeline(){/*
     navbar.style.display= "none";
     header.style.display =  "none";
     knappHållare.style.height = window.innerHeight + "px";
     console.log(window.innerHeight);*/
 }
-
-let counter = 1;
-function nästa(){
-
-    if(counter == slides.length)
-        {return;}
-    slides[counter].style.top = "0";
-    slides[counter].style.zIndex = counter;
-    slides[counter-1].style.opacity = "0";
-    if(counter == slides.length-1)
-    {return;}
-    counter++;
-    slides[counter].style.zIndex = counter;
-}
-function bakåt(){
-    if(counter==1)
-        {return;}
-
-    slides[counter-1].style.opacity = "1";
-    slides[counter].style.top = "100vh";
-    counter--;
-}
-let blah = 0;
+let fårFortsätta = true;
 
 
-window.addEventListener('wheel', event => {
-    const delta = Math.sign(event.deltaY);
-    console.info(delta);
-    blah+=delta;
-    console.log(blah*10 + "vh");
-    console.log(counter);
 
-    if(footer.getBoundingClientRect().top != 0){
-        console.log(footer.getBoundingClientRect().top + "ff");
-        SmoothTransition();
-    }
-
-
-    if(blah%5 == 0){
-        blah = 0;
-        if(delta>0){
-            nästa();
-        }else{
-            bakåt();
-        }
-
-    }
+window.addEventListener('wheel', () =>{
+    const delta = Math.sign(event.deltaY) * 10;
+    Scrollar(delta);
 });
+let fårTrycka = true;
+
+
+document.addEventListener('keydown', function (event){
+    if(fårTrycka)
+    {
+        fårTrycka = false;
+        if(event.code == "ArrowDown"){
+            Scrollar(10);
+        }else if(event.code == "ArrowUp"){
+            Scrollar(-10);
+        }
+    }
+    fårTrycka=true;
+
+})
+
+function Scrollar(delta){
+    
+    hundra = hundra - delta;
+    console.log(hundra + "vh");
+
+    if(hundra<=100 && delta<0 || hundra>=0&&delta>0){
+        slides[counter].style.top = hundra + "vh";
+    }else{
+        hundra = hundra + delta;
+        if(hundra==0){
+            console.log("shlooaa");
+            slides[counter-1].style.opacity = "0";
+            fårGåVidare=true;
+        }
+    }
+}
+
+
+async function sleep(ms) {
+            return new Promise(resolve => setTimeout(resolve, ms));
+        }
 
 function SmoothTransition(){
     try{

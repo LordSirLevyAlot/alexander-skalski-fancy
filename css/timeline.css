@@ -11,6 +11,7 @@ main{
 }
 article{
     margin:0;
+    height:100%;
     width:100%;
     text-align: center;
     border-radius: 0;
@@ -18,25 +19,34 @@ article{
     padding-top:10%;
 }
 .start{
-    height:30rem;
+    height:10vw;
     text-align: center;
-    padding-top:10%;
-    position:relative;
+    bottom:0px;
+    margin-bottom:10%;
+    position:absolute;
+    width:100%;
     color:white;
     background-image: linear-gradient(rgba(0,0,0,0), rgba(15,15,15,0.8));
 }
 .fa-chevron-down{
+    clip-path: polygon(-11.42% 61px, 12.21% 29px, 49.36% 90px, 87.27% 34px, 112.91% 61px, 49.62% 172px);
     font-size: 10vw;
     position:relative;
-    top:60%;
+    transition:font-size 1s;
+}
+.fa-chevron-down:hover{
+    font-size:12vw;
 }
 .slide{
     height:100%;
     position: fixed;
     top:100vh;
+    
     transition:top 2s, opacity 3s;
 }
-
+.ett #knappHållare{
+    margin-bottom:0;
+}
 .ett{
     z-index:0;
     display:block;
