@@ -1,27 +1,39 @@
 body{
     overflow: hidden;
+    background-color: tomato;
 }
 
-
-/*Founder*/
+.överstaDelen{
+    z-index:50;
+    position:absolute;
+    margin:0;
+}
+header{
+    height:20%;
+}
+nav{
+    position:static;
+    height:10%;
+    margin:0;
+}
 main{
     display:block;
-    top:0;
+    height:40%;
     position:absolute;
 }
 article{
     margin:0;
-    height:100%;
+
     width:100%;
     text-align: center;
     border-radius: 0;
     opacity:1;
     padding-top:10%;
-}
+}/*
 .start{
     height:10vw;
     text-align: center;
-    bottom:0px;
+    bottom:0;
     margin-bottom:10%;
     position:absolute;
     width:100%;
@@ -36,9 +48,10 @@ article{
 }
 .fa-chevron-down:hover{
     font-size:12vw;
-}
+}*/
 .slide{
-    height:100%;
+    margin:0;
+    height:70%;
     position: fixed;
     top:100vh;
     
@@ -50,5 +63,5 @@ article{
 .ett{
     z-index:0;
     display:block;
-    top:0vh;
+    top:28%;
 }

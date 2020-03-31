@@ -46,6 +46,7 @@ h1, h2, h3{
     height:120vh;
     margin-top:160%;
     background-image: linear-gradient(to bottom, rgba(92, 79, 79, 0), rgb(53, 52, 52), rgb(53, 52, 52), rgb(53, 52, 52));
+    position:fixed;
 }
 
 
@@ -88,6 +89,7 @@ nav{
     color:white;
     background-image: linear-gradient(to bottom, rgba(241, 238, 238, 0.8), rgb(27, 26, 26));
 }
+
 .aboutList{
     text-align: start;
     opacity:0;
@@ -232,6 +234,7 @@ footer{
     font-size: 1.2rem;
     position:absolute;
     margin-bottom:0;
+
 }
 
 
@@ -273,31 +276,46 @@ footer{
 
 
 @media (max-width:1000px){
+    *{
+        font-size: 90%;
+    }
+    h1{
+        font-size: 100%;
+    }
     body::-webkit-scrollbar{
         width:0.8rem;
     }
     #mellan{
-        height:20vh;
-        margin-top:180%;
+        height:50vh;
+        margin-top:200%;
     }
     nav{
         grid-template-columns:1fr;
-        background-image: linear-gradient(to bottom, rgba(241, 238, 238, 0.8), rgba(54, 52, 52, 1));
-        height:100vh;
+        height:60vh;
         width:70vw;
 
-        left:70vw;
+        left:90vw;
         bottom:0;
-        top:0;
-        position:sticky;
+        top:40%;
+        position:fixed;
         transition:left 1s;
     }
+    nav:hover{
+        left:30vw;
+    }
     .navItem{
-        background-image: none;
+        height:100%;
+        margin:0;
         border-top:solid;
         border-color:rgba(15, 15, 15, 0.4);
     }
     main{
         top:30rem;
+        display:flex;
+        flex-direction: column;
+    }
+    .multiple{
+        display:flex;
+        flex-direction: column;
     }
 }

@@ -5,10 +5,13 @@ let footer = document.querySelector("footer");
 
 let slides = document.getElementsByClassName("slide");
 
+let minHöjd = 100*document.getElementsByClassName("ett")[0].getBoundingClientRect().top/window.innerHeight;
+console.log(minHöjd);
+
 let counter = 1;
-let hundra = 100;
+let längdFrånToppen = 100;
 
-
+/*
 let fortsätt= document.getElementsByClassName("fa-chevron-down");
 let fårGåVidare = false;
 for (let index = 0; index < fortsätt.length; index++) {
@@ -17,13 +20,13 @@ for (let index = 0; index < fortsätt.length; index++) {
             return;
         }
         counter++;
-        hundra = 100;
+        längdFrånToppen = 100;
         fårGåVidare=false;
     });
     
 }
+*/
 
-startKnapp.addEventListener('click', påbörjaTimeline);
 function påbörjaTimeline(){/*
     navbar.style.display= "none";
     header.style.display =  "none";
@@ -32,10 +35,11 @@ function påbörjaTimeline(){/*
 }
 let fårFortsätta = true;
 
+let scrollJusterare = 10;
 
 //Hjul input
 window.addEventListener('wheel', () =>{
-    const delta = Math.sign(event.deltaY) * 10;
+    const delta = Math.sign(event.deltaY) * scrollJusterare;
     Scrollar(delta);
 });
 let fårTrycka = true;
@@ -46,52 +50,82 @@ document.addEventListener('keydown', function (event){
     {
         fårTrycka = false;
         if(event.code == "ArrowDown"){
-            Scrollar(10);
+            Scrollar(scrollJusterare);
         }else if(event.code == "ArrowUp"){
-            Scrollar(-10);
+            Scrollar(-scrollJusterare);
         }
     }
     fårTrycka=true;
 
 })
+let senasteTouch = 1000;
+document.body.addEventListener('touchmove', function(event){
+    console.log(event.changedTouches[0].screenY);
+    if(event.changedTouches[0].screenY>senasteTouch){
+        Scrollar(-scrollJusterare);
+    }else if(event.changedTouches[0].screenY < senasteTouch){
+        Scrollar(scrollJusterare);
+    }
+    senasteTouch = event.changedTouches[0].screenY;
+})
 
 function Scrollar(delta){
     
-    hundra = hundra - delta;
-    console.log(hundra + "vh");
+    längdFrånToppen = längdFrånToppen - delta;
+    console.log(längdFrånToppen + "vh   " + delta);
 
     //Scrollar uppåt
-    if(hundra<=100 && delta<0){
-        if(hundra>50){
+    if(längdFrånToppen<=100 && delta<0){
+
+        if(längdFrånToppen>50){
+            console.log("Active cheat");
+            längdFrånToppen = 100;
             slides[counter].style.top = "100vh";
         }else{
-            slides[counter].style.top = hundra + "vh";
+            slides[counter].style.top = längdFrånToppen + "vh";
+            slides[counter-1].style.opacity = 0.01*längdFrånToppen;
         }
-    }else if(hundra>=0&&delta>0){//Scrollar nedåt
-        if(hundra<50){
-            console.log("beee");
-            slides[counter].style.top = "0vh";
+    }else if(längdFrånToppen>=minHöjd && delta>0){//Scrollar nedåt
+        
+        if(längdFrånToppen<50){
+            //console.log("beee");
+            längdFrånToppen = minHöjd;
+            slides[counter].style.top = längdFrånToppen + "vh";
         }else{
-            slides[counter].style.top = hundra + "vh";
+            slides[counter-1].style.opacity = 0.01*längdFrånToppen;
+            slides[counter].style.top = längdFrånToppen + "vh";
         }
     }
     else{//Nått en gräns och man inte får scrolla åt det hållet
-        hundra = hundra + delta;
-        if(hundra==0){
+        längdFrånToppen = längdFrånToppen + delta;
+        if(längdFrånToppen<=minHöjd){
             slides[counter-1].style.opacity = "0";
-            fårGåVidare=true;
+            if(counter != slides.length-1){
+                console.log("BYTER NEDÅT");
+                counter++;
+                längdFrånToppen = 100;
+            }
+        }else if(längdFrånToppen>=100 && counter != 1){
+            console.log("BYTER UPPÅT");
+            console.log("kommer in som " + counter);
+            counter--;
+
+            längdFrånToppen = minHöjd;
         }
+    }
+    if(slides[counter].style.top == "100vh"){
+        slides[counter-1].style.opacity = "1";
+    }else if(slides[counter].style.top == minHöjd + "vh"){
+        slides[counter-1].style.opacity = "0";
     }
 }
 
+//Funktion som sänker scrollJusterare en halv sekund och sen höjer den igen
+
+async function PausaScroll(){
+    scrollJusterare = 1;
+}
 
 async function sleep(ms) {
-            return new Promise(resolve => setTimeout(resolve, ms));
-        }
-
-function SmoothTransition(){
-    try{
-        slides[counter].style.top = 100-blah*10 + "vh";
-    }
-    catch{}
+    return new Promise(resolve => setTimeout(resolve, ms));
 }

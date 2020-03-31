@@ -2,6 +2,7 @@ document.addEventListener('wheel', handleScrolling);
 window.addEventListener('resize scroll', handleScrolling);
 //window.onerror = window.prompt("opsie whoopsie");
 
+/*
 let width = window.width;
 let navbar = document.querySelector("nav");
 let utvikt = false;
@@ -11,15 +12,18 @@ navbar.addEventListener('click', () =>{
         return;
     }
     if(utvikt){
-        navbar.style.left = "70vw";
+        navbar.style.left = "100vw";
         utvikt = false;
     }else{
         navbar.style.left = "30vw";
         utvikt = true;
     }
-})
+})*/
     
-
+let saker = document.querySelectorAll("section");
+window.addEventListener('load', ()=>{
+    saker[0].style.opacity = "1";
+})
 
 function handleScrolling(){
     let höjd = document.body.scrollHeight;
@@ -30,7 +34,7 @@ function handleScrolling(){
 
 
 
-let saker = document.querySelectorAll("section");
+
 
 for (let index = 0; index < saker.length; index++) {
 
