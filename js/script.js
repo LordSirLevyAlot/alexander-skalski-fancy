@@ -2,6 +2,25 @@ document.addEventListener('wheel', handleScrolling);
 window.addEventListener('resize scroll', handleScrolling);
 //window.onerror = window.prompt("opsie whoopsie");
 
+let width = window.width;
+let navbar = document.querySelector("nav");
+let utvikt = false;
+
+navbar.addEventListener('click', () =>{
+    if(width>1000){
+        return;
+    }
+    if(utvikt){
+        navbar.style.left = "70vw";
+        utvikt = false;
+    }else{
+        navbar.style.left = "30vw";
+        utvikt = true;
+    }
+})
+    
+
+
 function handleScrolling(){
     let höjd = document.body.scrollHeight;
     let höjdAvSkärm = (window.innerHeight || document.documentElement.clientWidth);

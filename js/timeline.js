@@ -33,14 +33,14 @@ function påbörjaTimeline(){/*
 let fårFortsätta = true;
 
 
-
+//Hjul input
 window.addEventListener('wheel', () =>{
     const delta = Math.sign(event.deltaY) * 10;
     Scrollar(delta);
 });
 let fårTrycka = true;
 
-
+//Tangentinput
 document.addEventListener('keydown', function (event){
     if(fårTrycka)
     {
@@ -60,12 +60,24 @@ function Scrollar(delta){
     hundra = hundra - delta;
     console.log(hundra + "vh");
 
-    if(hundra<=100 && delta<0 || hundra>=0&&delta>0){
-        slides[counter].style.top = hundra + "vh";
-    }else{
+    //Scrollar uppåt
+    if(hundra<=100 && delta<0){
+        if(hundra>50){
+            slides[counter].style.top = "100vh";
+        }else{
+            slides[counter].style.top = hundra + "vh";
+        }
+    }else if(hundra>=0&&delta>0){//Scrollar nedåt
+        if(hundra<50){
+            console.log("beee");
+            slides[counter].style.top = "0vh";
+        }else{
+            slides[counter].style.top = hundra + "vh";
+        }
+    }
+    else{//Nått en gräns och man inte får scrolla åt det hållet
         hundra = hundra + delta;
         if(hundra==0){
-            console.log("shlooaa");
             slides[counter-1].style.opacity = "0";
             fårGåVidare=true;
         }

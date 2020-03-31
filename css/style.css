@@ -63,6 +63,7 @@ header{
 nav{
     position: sticky;
     top: 0;
+    left:0;
     z-index:10;
     width:100vw;
     display:grid;
@@ -282,7 +283,14 @@ footer{
     nav{
         grid-template-columns:1fr;
         background-image: linear-gradient(to bottom, rgba(241, 238, 238, 0.8), rgba(54, 52, 52, 1));
-        height:30rem;
+        height:100vh;
+        width:70vw;
+
+        left:70vw;
+        bottom:0;
+        top:0;
+        position:sticky;
+        transition:left 1s;
     }
     .navItem{
         background-image: none;
