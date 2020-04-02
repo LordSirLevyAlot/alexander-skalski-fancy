@@ -233,7 +233,7 @@ footer{
     padding:1rem;
     font-size: 1.2rem;
     position:absolute;
-    margin-bottom:0;
+    page-break-after: always;
 
 }
 
@@ -248,7 +248,7 @@ footer{
     margin:0;
     bottom:-300%;
     animation: referensRörelse 5s linear;
-}/*
+}/* Ska bara triggas när användaren nåt botten av sidan
 @keyframes referensRörelse{
     0%{transform:    translateX(300%)  translateY(-20%)}
     20%{transform:   translateX(200%)  translateY(-50%)}
@@ -282,6 +282,10 @@ footer{
     h1{
         font-size: 100%;
     }
+    body{
+        display: grid;
+        grid-template-columns: 5fr 1fr;
+    }
     body::-webkit-scrollbar{
         width:0.8rem;
     }
@@ -289,33 +293,44 @@ footer{
         height:50vh;
         margin-top:200%;
     }
+    header{
+        position:static;
+        width:100%;
+        grid-row:1;
+    }
     nav{
+        grid-column:2;
         grid-template-columns:1fr;
-        height:60vh;
-        width:70vw;
-
+        height:100vh;
+        width:100%;
+/*
         left:90vw;
         bottom:0;
-        top:40%;
+        top:40%;*/
         position:fixed;
         transition:left 1s;
     }
     nav:hover{
-        left:30vw;
+        left:-30vw;
     }
     .navItem{
         height:100%;
         margin:0;
         border-top:solid;
         border-color:rgba(15, 15, 15, 0.4);
+        transition:none;
     }
     main{
         top:30rem;
         display:flex;
         flex-direction: column;
+        grid-row: 2;
     }
     .multiple{
         display:flex;
         flex-direction: column;
+    }
+    footer{
+        grid-row: 3;
     }
 }

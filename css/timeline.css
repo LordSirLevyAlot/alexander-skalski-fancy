@@ -5,63 +5,66 @@ body{
 
 .överstaDelen{
     z-index:50;
-    position:absolute;
-    margin:0;
+    position: fixed;
+    height:30%;
 }
-header{
-    height:20%;
-}
-nav{
-    position:static;
-    height:10%;
-    margin:0;
-}
+
 main{
     display:block;
-    height:40%;
-    position:absolute;
+    height:170vh;
+    position: fixed;
+}
+
+
+
+nav{
+    position:static;
+    height:auto;
 }
 article{
-    margin:0;
 
     width:100%;
     text-align: center;
     border-radius: 0;
     opacity:1;
     padding-top:10%;
-}/*
-.start{
-    height:10vw;
-    text-align: center;
-    bottom:0;
-    margin-bottom:10%;
-    position:absolute;
-    width:100%;
-    color:white;
-    background-image: linear-gradient(rgba(0,0,0,0), rgba(15,15,15,0.8));
 }
-.fa-chevron-down{
-    clip-path: polygon(-11.42% 61px, 12.21% 29px, 49.36% 90px, 87.27% 34px, 112.91% 61px, 49.62% 172px);
-    font-size: 10vw;
-    position:relative;
-    transition:font-size 1s;
-}
-.fa-chevron-down:hover{
-    font-size:12vw;
-}*/
 .slide{
     margin:0;
-    height:70%;
+    height: 70vh;
     position: fixed;
     top:100vh;
+    /*display:grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);*/
+
+
     
     transition:top 2s, opacity 3s;
 }
-.ett #knappHållare{
-    margin-bottom:0;
-}
+
 .ett{
     z-index:0;
     display:block;
     top:28%;
+}
+
+
+
+/*Grid placerar klasser*/
+.topLeft{
+    grid-column:1;
+    grid-row:1/3;
+}
+.topRight{
+    grid-column:3;
+    grid-row:1/3;
+}
+.botLeft{
+    grid-column:1;
+    grid-row:2/4;
+}
+.botRight{
+    grid-column:3;
+    grid-row:2/4;
 }
