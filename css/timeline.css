@@ -3,40 +3,105 @@ body{
     background-color: tomato;
 }
 
-.överstaDelen{
-    z-index:50;
-    position: fixed;
-    height:30%;
-}
 
 main{
     display:block;
     height:170vh;
     position: fixed;
 }
-
-
-
-nav{
-    position:static;
-    height:auto;
+.ikon{
+    transform: scale(0.5);
+    position: fixed;
+    top:10%;
+    right:0%;
+    z-index:50;
 }
+
+.navHållare{
+    display:grid;
+    grid-template-rows: 1fr 10fr;
+    height:100vh;
+    width:20%;
+    left:95vw;
+    z-index:51;
+    top:0;
+    position:relative;
+    transition:left 1s;
+}
+nav{
+    display:grid;
+    padding-left:1rem;
+    grid-template-columns:1fr;
+    grid-column:2;
+    grid-row: 1/3;
+    height:100%;
+    background-image: linear-gradient(to bottom, rgba(241, 238, 238, 0.8), rgba(54, 52, 52, 1));
+
+}
+
+.fa-bars{
+    font-size: 3vw;
+    position:relative;
+    left:25%;
+    top:10%;
+}
+.coverUp{
+    width:5vw;
+    grid-column: 1;
+    grid-row: 1;
+    border-bottom-left-radius: 1rem;
+    background-color:rgba(241, 238, 238, 0.8);
+}
+.navItemF{
+    grid-column: 1;
+    height:97%;
+    position:static;
+    background-image: none;
+    transition:none;
+    transition-duration: 0s;
+}
+
+.navItemF:hover{
+    height:100%;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+    padding-top:0;
+
+}
+.aboutList{
+    opacity:1;
+    font-size: inherit;
+}
+
+.navItem:hover .navTitle{
+    font-size: 100%;
+}
+.navItemF:nth-child(1) .navTitle{
+    font-size: 220%;
+}
+
+.navTitle a{
+    color:rgb(35, 49, 245);
+}
+
+
+
 article{
 
     width:100%;
     text-align: center;
     border-radius: 0;
     opacity:1;
-    padding-top:10%;
+    padding-top:15%;
 }
 .slide{
     margin:0;
-    height: 70vh;
+    height: 100vh;
     position: fixed;
     top:100vh;
-    /*display:grid;
+    display:grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(3, 1fr);*/
+    grid-template-rows: repeat(3, 1fr);
 
 
     
@@ -46,7 +111,7 @@ article{
 .ett{
     z-index:0;
     display:block;
-    top:28%;
+    top:0;
 }
 
 
@@ -67,4 +132,19 @@ article{
 .botRight{
     grid-column:3;
     grid-row:2/4;
+}
+
+
+@media (max-width:1000px){
+    nav{
+        grid-column:2;
+        grid-template-columns:1fr;
+        height:100vh;
+        width:100%;
+        position:sticky;
+        transition:left 1s;
+    }
+    nav:hover{
+        left:-30vw;
+    }
 }

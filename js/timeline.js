@@ -1,15 +1,42 @@
 let startKnapp = document.getElementById("knapp");
-let knappHållare = document.getElementById("knappHållare");
 let footer = document.querySelector("footer");
-
+let ikon = document.querySelector("img[src='pics/logga2.png']").height;
 
 let slides = document.getElementsByClassName("slide");
 
 let minHöjd = 100*document.getElementsByClassName("ett")[0].getBoundingClientRect().top/window.innerHeight;
-console.log(minHöjd);
+console.log(minHöjd + "Minhöjd");
 
 let counter = 1;
 let längdFrånToppen = 100;
+
+
+//Navbar som kommer in från sidan
+let navBarKnapp = document.getElementsByClassName("fa-bars");
+let nav = document.getElementsByClassName("navHållare");
+let navBarUtvikt = false;
+
+document.body.addEventListener('click', function(event){
+    console.log(event.screenX);
+    console.log(0.83*document.body.clientWidth);
+    if(navBarUtvikt){
+        if(event.screenX<=0.83*document.body.clientWidth){
+            nav[0].style.left = "95vw";
+            navBarUtvikt = false;
+        }
+    }
+
+});
+
+navBarKnapp[0].addEventListener('click', ()=>{
+    if(navBarUtvikt){
+        nav[0].style.left = "95vw";
+        navBarUtvikt = false;
+    }else{
+        nav[0].style.left = "70vw";
+        navBarUtvikt = true;
+    }
+})
 
 /*
 let fortsätt= document.getElementsByClassName("fa-chevron-down");
@@ -60,7 +87,7 @@ document.addEventListener('keydown', function (event){
 })
 let senasteTouch = 1000;
 document.body.addEventListener('touchmove', function(event){
-    console.log(event.changedTouches[0].screenY);
+    //console.log(event.changedTouches[0].screenY);
     if(event.changedTouches[0].screenY>senasteTouch){
         Scrollar(-scrollJusterare);
     }else if(event.changedTouches[0].screenY < senasteTouch){
@@ -70,15 +97,15 @@ document.body.addEventListener('touchmove', function(event){
 })
 
 function Scrollar(delta){
-    
+    console.log(ikon);
     längdFrånToppen = längdFrånToppen - delta;
-    console.log(längdFrånToppen + "vh   " + delta);
+    //console.log(längdFrånToppen + "vh   " + delta);
 
     //Scrollar uppåt
     if(längdFrånToppen<=100 && delta<0){
 
         if(längdFrånToppen>50){
-            console.log("Active cheat");
+            //console.log("Active cheat");
             längdFrånToppen = 100;
             slides[counter].style.top = "100vh";
         }else{
@@ -101,13 +128,13 @@ function Scrollar(delta){
         if(längdFrånToppen<=minHöjd){
             slides[counter-1].style.opacity = "0";
             if(counter != slides.length-1){
-                console.log("BYTER NEDÅT");
+                //console.log("BYTER NEDÅT");
                 counter++;
                 längdFrånToppen = 100;
             }
         }else if(längdFrånToppen>=100 && counter != 1){
-            console.log("BYTER UPPÅT");
-            console.log("kommer in som " + counter);
+            //console.log("BYTER UPPÅT");
+            //console.log("kommer in som " + counter);
             counter--;
 
             längdFrånToppen = minHöjd;

@@ -64,7 +64,6 @@ header{
 nav{
     position: sticky;
     top: 0;
-    left:0;
     z-index:10;
     width:100vw;
     display:grid;
@@ -75,8 +74,6 @@ nav{
     position:sticky;
     text-align: center;
     height:5rem;
-    border-bottom-right-radius:0;
-    border-bottom-left-radius:0;
     padding-top:3%;
     background-image: linear-gradient(to bottom, rgba(241, 238, 238, 0.8), rgba(54, 52, 52, 1));
     transition:all 1s;
@@ -266,6 +263,68 @@ footer{
     80%{transform:  rotate(-10deg) }
     100%{transform: rotate(-40deg) }
 }*/
+/*Navbar för mindre upplösningar*/
+
+.navHållare{
+    display:none;
+    grid-template-rows: 1fr 1fr 1fr 8fr;
+    height:100vh;
+    width:20%;
+    left:95vw;
+    z-index:51;
+    position:sticky;
+    transition:left 1s;
+}
+.sekundärNav{
+    padding-left:1rem;
+    grid-template-columns:1fr;
+    grid-column:2;
+    grid-row: 1/5;
+    height:100%;
+    background-image: linear-gradient(to bottom, rgba(241, 238, 238, 0.8), rgba(54, 52, 52, 1));
+
+}
+
+.fa-bars{
+    font-size: 3vw;
+    position:relative;
+    left:25%;
+    top:10%;
+}
+.coverUp{
+    width:5vw;
+    grid-column: 1;
+    grid-row: 3;
+    position:relative;
+    top:20%;
+    bottom:50%;
+    margin-bottom:20%;
+    border-bottom-left-radius: 1rem;
+    border-top-left-radius: 1rem;
+    background-color:rgba(241, 238, 238, 0.8);
+}
+.navItemF{
+    grid-column: 1;
+    height:97%;
+    position:static;
+    background-image: none;
+    transition:none;
+    transition-duration: 0s;
+}
+
+.navItemF:hover{
+    height:100%;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+    padding-top:0;
+
+}
+.navItemF:nth-child(1) .navTitle{
+    font-size: 220%;
+}
+
+
+
 
 
 /*CEO*/
@@ -293,32 +352,26 @@ footer{
         height:50vh;
         margin-top:200%;
     }
+    .navTitle a{
+        color:rgb(35, 49, 245);
+    }
+    body>nav{
+        display:none;
+    }
+    .navHållare{
+        display:grid;
+    }
+    .navItem:hover .navTitle{
+        font-size: 100%;
+    }
     header{
         position:static;
         width:100%;
         grid-row:1;
     }
-    nav{
-        grid-column:2;
-        grid-template-columns:1fr;
-        height:100vh;
-        width:100%;
-/*
-        left:90vw;
-        bottom:0;
-        top:40%;*/
-        position:fixed;
-        transition:left 1s;
-    }
-    nav:hover{
-        left:-30vw;
-    }
-    .navItem{
-        height:100%;
-        margin:0;
-        border-top:solid;
-        border-color:rgba(15, 15, 15, 0.4);
-        transition:none;
+    .aboutList{
+        opacity:1;
+        font-size: inherit;
     }
     main{
         top:30rem;

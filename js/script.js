@@ -50,3 +50,33 @@ function handleScrolling(){
 }
 
 //let scrollat = window.scrollY;
+
+
+
+
+//Navbar som kommer in från sidan
+let navBarKnapp = document.getElementsByClassName("fa-bars");
+let nav = document.getElementsByClassName("navHållare");
+let navBarUtvikt = false;
+
+document.body.addEventListener('click', function(event){
+    console.log(event.screenX);
+    console.log(0.83*document.body.clientWidth);
+    if(navBarUtvikt){
+        if(event.screenX<=0.83*document.body.clientWidth){
+            nav[0].style.left = "95vw";
+            navBarUtvikt = false;
+        }
+    }
+
+});
+
+navBarKnapp[0].addEventListener('click', ()=>{
+    if(navBarUtvikt){
+        nav[0].style.left = "95vw";
+        navBarUtvikt = false;
+    }else{
+        nav[0].style.left = "70vw";
+        navBarUtvikt = true;
+    }
+})
