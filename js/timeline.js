@@ -61,7 +61,7 @@ function påbörjaTimeline(){/*
 }
 
 
-let scrollJusterare = 10;
+let scrollJusterare = 20;
 
 //Hjul input
 window.addEventListener('wheel', () =>{
@@ -98,13 +98,42 @@ document.body.addEventListener('touchmove', function(event){
 
 let fårFortsätta = true;
 function Scrollar(delta){
-    if(!fårFortsätta){
+    /*if(!fårFortsätta){
         return;
-    }
-    console.log(ikon);
-    längdFrånToppen = längdFrånToppen - delta;
-    //console.log(längdFrånToppen + "vh   " + delta);
+    }*/
+    //console.log(ikon);
 
+
+
+    console.log(counter);
+    console.log(längdFrånToppen);
+    längdFrånToppen = längdFrånToppen - delta;
+    if(längdFrånToppen >= 100 || längdFrånToppen <= 0){
+        slides[counter].style.top = längdFrånToppen + "vh";
+    }
+    if(längdFrånToppen >= 100){
+        slides[counter-1].style.opacity = "1";
+        längdFrånToppen=0;
+        if(counter!=1)
+        {
+            counter--;
+        }else{
+            längdFrånToppen += delta
+        }
+
+    }else if(längdFrånToppen <= 0){
+        slides[counter-1].style.opacity = "0";
+        längdFrånToppen = 100;
+        if(counter!=slides.length-1)
+        {
+            counter++;
+        }else{
+            längdFrånToppen += delta
+        }
+
+    }
+    //console.log(längdFrånToppen + "vh   " + delta);
+/*
     //Scrollar uppåt
     if(längdFrånToppen<=100 && delta<0){
         scrollJusterare = 10;
@@ -152,15 +181,15 @@ function Scrollar(delta){
         /*while(slides[counter].style.top != 0 || slides[counter].style.top != 100){
             console.log(slides[counter].style.top + "joojojo");
     
-        };*/
-    }
+        };
+    }/*
     if(slides[counter].style.top == "100vh"){
         slides[counter-1].style.opacity = "1";
         fårFortsätta = true;
-    }else if(slides[counter].style.top == minHöjd + "vh"){
+    }/*else if(slides[counter].style.top == minHöjd + "vh"){
         slides[counter-1].style.opacity = "0";
         fårFortsätta = true;
-    }
+    }*/
 
 
 
