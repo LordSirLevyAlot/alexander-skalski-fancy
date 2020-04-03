@@ -9,13 +9,7 @@ main{
     height:170vh;
     position: fixed;
 }
-.ikon{
-    transform: scale(0.5);
-    position: fixed;
-    top:10%;
-    right:0%;
-    z-index:50;
-}
+
 
 .navHållare{
     display:grid;
@@ -92,7 +86,6 @@ article{
     text-align: center;
     border-radius: 0;
     opacity:1;
-    padding-top:15%;
 }
 .slide{
     margin:0;
@@ -110,29 +103,80 @@ article{
 
 .ett{
     z-index:0;
-    display:block;
     top:0;
 }
 
+p{
+    margin:0;
+    padding:0;
+    border-style: solid;
+}
+img{
+    margin: 5% auto;
+}
+footer{
+    height:100%;
+}
 
 
 /*Grid placerar klasser*/
 .topLeft{
     grid-column:1;
-    grid-row:1/3;
+    grid-row:1;
+}
+.midLeft{
+    grid-column: 1/3;
+    grid-row: 2;
 }
 .topRight{
     grid-column:3;
     grid-row:1/3;
 }
-.botLeft{
+
+
+.top{
+    grid-row:1;
+}
+.mid{
+    grid-row:2;
+}
+.bot{
+    grid-row:3;
+}
+.left{
     grid-column:1;
-    grid-row:2/4;
+}
+.middle{
+    grid-column: 2;
+}
+.right{
+    grid-column:3;
+}
+.ySpan3{
+    grid-row: 1/4;
+}
+.xSpan3{
+    grid-column: 1/4;
+}
+
+.botLeft{
+    grid-column:1/3;
+    grid-row:3;
 }
 .botRight{
     grid-column:3;
     grid-row:2/4;
 }
+.topMid{
+    grid-column: 2;
+    grid-row: 1/3;
+}
+.column{
+    display:flex;
+    flex-direction: column;
+}
+
+
 
 
 @media (max-width:1000px){
