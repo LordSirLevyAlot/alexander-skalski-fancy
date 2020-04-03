@@ -9,7 +9,11 @@ main{
     height:170vh;
     position: fixed;
 }
-
+.ikon{
+    height:100%;
+    position:relative;
+    left:20%;
+}
 
 .navHållare{
     display:grid;
@@ -91,13 +95,10 @@ article{
     margin:0;
     height: 100vh;
     position: fixed;
-    top:100vh;
+    top:120vh;
     display:grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(3, 1fr);
-
-
-    
     transition:top 2s, opacity 3s;
 }
 
@@ -108,11 +109,10 @@ article{
 
 p{
     margin:0;
-    padding:0;
     border-style: solid;
 }
 img{
-    margin: 5% auto;
+    margin: auto;
 }
 footer{
     height:100%;

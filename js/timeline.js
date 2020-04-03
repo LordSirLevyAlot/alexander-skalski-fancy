@@ -10,7 +10,6 @@ console.log(minHöjd + "Minhöjd");
 let counter = 1;
 let längdFrånToppen = 100;
 
-
 //Navbar som kommer in från sidan
 let navBarKnapp = document.getElementsByClassName("fa-bars");
 let nav = document.getElementsByClassName("navHållare");
@@ -60,7 +59,7 @@ function påbörjaTimeline(){/*
     knappHållare.style.height = window.innerHeight + "px";
     console.log(window.innerHeight);*/
 }
-let fårFortsätta = true;
+
 
 let scrollJusterare = 10;
 
@@ -96,14 +95,19 @@ document.body.addEventListener('touchmove', function(event){
     senasteTouch = event.changedTouches[0].screenY;
 })
 
+
+let fårFortsätta = true;
 function Scrollar(delta){
+    if(!fårFortsätta){
+        return;
+    }
     console.log(ikon);
     längdFrånToppen = längdFrånToppen - delta;
     //console.log(längdFrånToppen + "vh   " + delta);
 
     //Scrollar uppåt
     if(längdFrånToppen<=100 && delta<0){
-
+        scrollJusterare = 10;
         if(längdFrånToppen>50){
             //console.log("Active cheat");
             längdFrånToppen = 100;
@@ -112,18 +116,22 @@ function Scrollar(delta){
             slides[counter].style.top = längdFrånToppen + "vh";
             slides[counter-1].style.opacity = 0.01*längdFrånToppen;
         }
-    }else if(längdFrånToppen>=minHöjd && delta>0){//Scrollar nedåt
-        
+    }
+    else if(längdFrånToppen>=minHöjd && delta>0){//Scrollar nedåt     
         if(längdFrånToppen<50){
             //console.log("beee");
             längdFrånToppen = minHöjd;
             slides[counter].style.top = längdFrånToppen + "vh";
+            scrollJusterare = 1;
+        }else if(längdFrånToppen<100){
+            scrollJusterare = 10;
         }else{
             slides[counter-1].style.opacity = 0.01*längdFrånToppen;
             slides[counter].style.top = längdFrånToppen + "vh";
         }
     }
     else{//Nått en gräns och man inte får scrolla åt det hållet
+        fårFortsätta = true;
         längdFrånToppen = längdFrånToppen + delta;
         if(längdFrånToppen<=minHöjd){
             slides[counter-1].style.opacity = "0";
@@ -139,12 +147,40 @@ function Scrollar(delta){
 
             längdFrånToppen = minHöjd;
         }
+
+
+        /*while(slides[counter].style.top != 0 || slides[counter].style.top != 100){
+            console.log(slides[counter].style.top + "joojojo");
+    
+        };*/
     }
     if(slides[counter].style.top == "100vh"){
         slides[counter-1].style.opacity = "1";
+        fårFortsätta = true;
     }else if(slides[counter].style.top == minHöjd + "vh"){
         slides[counter-1].style.opacity = "0";
+        fårFortsätta = true;
     }
+
+
+
+   /* if(fårFortsätta){
+        fårFortsätta = false;
+        console.log("TID:");
+        let tidEtt = new Date();
+        console.log(tidEtt.getTime());
+
+        let tidTvå = new Date();
+        console.log(tidTvå.getTime());
+
+        while(tidEtt.getTime()+200 > tidTvå.getTime()){
+            console.log(tidEtt.getMilliseconds() + "   " + tidTvå.getMilliseconds());
+            console.log("HELLO");
+            tidTvå = new Date();
+        };
+        console.log("Free from that wretched prison");
+        fårFortsätta = true;
+    }*/
 }
 
 //Funktion som sänker scrollJusterare en halv sekund och sen höjer den igen
