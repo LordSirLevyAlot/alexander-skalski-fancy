@@ -60,10 +60,12 @@ let nav = document.getElementsByClassName("navHållare");
 let navBarUtvikt = false;
 
 document.body.addEventListener('click', function(event){
-    console.log(event.screenX);
-    console.log(0.83*document.body.clientWidth);
+    let klickatX = event.clientX;
+    let gränsFörUtvikning = 0.8*window.innerWidth;
+    console.log(klickatX);
+    console.log(gränsFörUtvikning);
     if(navBarUtvikt){
-        if(event.screenX<=0.83*document.body.clientWidth){
+        if(klickatX<=gränsFörUtvikning){
             nav[0].style.left = "95vw";
             navBarUtvikt = false;
         }

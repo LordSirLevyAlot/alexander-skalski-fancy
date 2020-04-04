@@ -16,10 +16,12 @@ let nav = document.getElementsByClassName("navHållare");
 let navBarUtvikt = false;
 
 document.body.addEventListener('click', function(event){
-    console.log(event.screenX);
-    console.log(0.83*document.body.clientWidth);
+    let klickatX = event.clientX;
+    let gränsFörUtvikning = 0.8*window.innerWidth;
+    console.log(klickatX);
+    console.log(gränsFörUtvikning);
     if(navBarUtvikt){
-        if(event.screenX<=0.83*document.body.clientWidth){
+        if(klickatX<=gränsFörUtvikning){
             nav[0].style.left = "95vw";
             navBarUtvikt = false;
         }
@@ -61,10 +63,11 @@ function påbörjaTimeline(){/*
 }
 
 
-let scrollJusterare = 20;
+let scrollJusterare = 10;
 
 //Hjul input
 window.addEventListener('wheel', () =>{
+    console.log("Scrollar");
     const delta = Math.sign(event.deltaY) * scrollJusterare;
     Scrollar(delta);
 });
@@ -101,13 +104,14 @@ function Scrollar(delta){
     /*if(!fårFortsätta){
         return;
     }*/
-    //console.log(ikon);
 
-
+    längdFrånToppen = längdFrånToppen - delta;
+    console.log(längdFrånToppen);
+/*
 
     console.log(counter);
     console.log(längdFrånToppen);
-    längdFrånToppen = längdFrånToppen - delta;
+
     if(längdFrånToppen >= 100 || längdFrånToppen <= 0){
         slides[counter].style.top = längdFrånToppen + "vh";
     }
@@ -131,9 +135,9 @@ function Scrollar(delta){
             längdFrånToppen += delta
         }
 
-    }
+    }*/
     //console.log(längdFrånToppen + "vh   " + delta);
-/*
+
     //Scrollar uppåt
     if(längdFrånToppen<=100 && delta<0){
         scrollJusterare = 10;
@@ -151,9 +155,7 @@ function Scrollar(delta){
             //console.log("beee");
             längdFrånToppen = minHöjd;
             slides[counter].style.top = längdFrånToppen + "vh";
-            scrollJusterare = 1;
-        }else if(längdFrånToppen<100){
-            scrollJusterare = 10;
+
         }else{
             slides[counter-1].style.opacity = 0.01*längdFrånToppen;
             slides[counter].style.top = längdFrånToppen + "vh";
@@ -181,15 +183,15 @@ function Scrollar(delta){
         /*while(slides[counter].style.top != 0 || slides[counter].style.top != 100){
             console.log(slides[counter].style.top + "joojojo");
     
-        };
-    }/*
+        };*/
+    }
     if(slides[counter].style.top == "100vh"){
         slides[counter-1].style.opacity = "1";
-        fårFortsätta = true;
-    }/*else if(slides[counter].style.top == minHöjd + "vh"){
+        //fårFortsätta = true;
+    }else if(slides[counter].style.top == minHöjd + "vh"){
         slides[counter-1].style.opacity = "0";
-        fårFortsätta = true;
-    }*/
+        //fårFortsätta = true;
+    }
 
 
 

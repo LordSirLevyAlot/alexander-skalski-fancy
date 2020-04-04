@@ -1,6 +1,8 @@
 body{
     overflow: hidden;
     background-color: tomato;
+    position:absolute;
+    font-size: 2rem;
 }
 
 
@@ -11,8 +13,8 @@ main{
 }
 .ikon{
     height:100%;
-    position:relative;
-    left:20%;
+    position:absolute;
+    left:25%;
 }
 
 .navHållare{
@@ -85,7 +87,6 @@ nav{
 
 
 article{
-
     width:100%;
     text-align: center;
     border-radius: 0;
@@ -109,6 +110,7 @@ article{
 
 p{
     margin:0;
+    padding:auto;
     border-style: solid;
 }
 img{

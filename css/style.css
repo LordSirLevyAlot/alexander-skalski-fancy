@@ -5,19 +5,19 @@
 html{
     overflow:hidden;
 }
-body::-webkit-scrollbar{
+.body::-webkit-scrollbar{
     width:1rem;
 }
-body::-webkit-scrollbar-track{
+.body::-webkit-scrollbar-track{
     background: rgb(40,40,40);
 }
-body::-webkit-scrollbar-thumb{
+.body::-webkit-scrollbar-thumb{
     background: white;
     border-radius:0.25rem;
 }
-body{
+.body{
     background-color: rgb(53, 52, 52);
-    font-size: 2rem;
+    font-size: 1.8vw;
     /*font-size:2vw;*/
     font-family: 'EB Garamond', serif;
     perspective:1px;
@@ -26,6 +26,7 @@ body{
     overflow-x: hidden;
     width:100vw;
     height:100vh;
+    position:relative;
 }
 h1, h2, h3{
     font-family: 'Bebas Neue', cursive;
@@ -33,20 +34,23 @@ h1, h2, h3{
 
 
 .background{
+    overflow: hidden;
     z-index:-1;
     width:100vw;
+
     position:absolute;
     transform-style:preserve-3d;
     transform: translateZ(-1px) scale(2);
     box-sizing: border-box;
     vertical-align: top;
     background-position: top;
+
 }
-#mellan{
+.body #mellan{
     height:120vh;
-    margin-top:160%;
+    top:300%;
     background-image: linear-gradient(to bottom, rgba(92, 79, 79, 0), rgb(53, 52, 52), rgb(53, 52, 52), rgb(53, 52, 52));
-    position:fixed;
+    
 }
 
 
@@ -59,8 +63,15 @@ header{
     flex-direction: row;
 }
 
+a{
+    color:#dbdb94;
+    transition:margin 1s;
+}
+a:hover{
+    color:#dada68;
+}
 
-
+/*Standard nav saker*/
 nav{
     position: sticky;
     top: 0;
@@ -118,18 +129,11 @@ nav{
 .navItem:hover .navTitle{
     font-size: 120%;
 }
-a{
-    color:#dbdb94;
-    transition:margin 1s;
-}
-a:hover{
-    color:#dada68;
-}
+
 li>a:hover{
     margin-left:1rem;
 }
-
-
+/**/
 
 
 main{
@@ -215,6 +219,12 @@ section{
     border-style: none;
     margin:5%;
 }
+.row{
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+}
+
 
 
 
@@ -222,16 +232,17 @@ section{
 footer{
     background-image:linear-gradient(to bottom, rgba(241, 238, 238, 0.8), rgb(27, 26, 26));
     display:grid;
-    grid-template-rows: 1fr 1fr;
     grid-template-columns: repeat(3, 1fr);
-    width: 100%;
     height: 10rem;
     color:white;
+    height:fit-content;
     padding:1rem;
-    font-size: 1.2rem;
-    position:absolute;
-    page-break-after: always;
-
+    font-size: 1.8vw;
+    margin-top: auto;
+    position:relative;
+    bottom:0;
+    left:0;
+    right:0;
 }
 
 
@@ -263,28 +274,28 @@ footer{
     80%{transform:  rotate(-10deg) }
     100%{transform: rotate(-40deg) }
 }*/
-/*Navbar för mindre upplösningar*/
 
+
+/*Navbar för mindre upplösningar*/
 .navHållare{
     display:none;
-    grid-template-rows: 1fr 1fr 1fr 8fr;
-    height:100vh;
-    width:20%;
+    height:100%;
+    width:30vw;
     left:95vw;
     z-index:51;
-    position:sticky;
+    position:fixed;
+    top:0;
     transition:left 1s;
 }
 .sekundärNav{
     padding-left:1rem;
     grid-template-columns:1fr;
     grid-column:2;
-    grid-row: 1/5;
+    grid-row: 2/5;
     height:100%;
+    width:100%;
     background-image: linear-gradient(to bottom, rgba(241, 238, 238, 0.8), rgba(54, 52, 52, 1));
-
 }
-
 .fa-bars{
     font-size: 3vw;
     position:relative;
@@ -292,24 +303,25 @@ footer{
     top:10%;
 }
 .coverUp{
-    width:5vw;
+    width:100%;
     grid-column: 1;
     grid-row: 3;
     position:relative;
+    right:0;
     top:20%;
-    bottom:50%;
-    margin-bottom:20%;
     border-bottom-left-radius: 1rem;
     border-top-left-radius: 1rem;
-    background-color:rgba(241, 238, 238, 0.8);
+    background-color:rgba(129, 126, 126, 0.877)
 }
 .navItemF{
     grid-column: 1;
     height:97%;
-    position:static;
     background-image: none;
     transition:none;
     transition-duration: 0s;
+}
+.navLogga{
+    grid-column: 2;
 }
 
 .navItemF:hover{
@@ -322,7 +334,7 @@ footer{
 .navItemF:nth-child(1) .navTitle{
     font-size: 220%;
 }
-
+/**/
 
 
 
@@ -332,7 +344,22 @@ footer{
     width:100%;
 }
 
-
+/*Joblistings*/
+.joblistings{
+    background-color: rgba(102, 116, 243, 0.8);
+    list-style-position: inside;
+    border-top-left-radius:1rem;
+    border-top-right-radius:1rem;
+}
+.joblistings li:nth-child(even){
+    background-color: rgba(102, 116, 243, 0.4);
+}
+.joblistings li{
+    padding:3rem;
+}
+.citat{
+    font-size: 150%;
+}
 
 @media (max-width:1000px){
     *{
@@ -341,33 +368,38 @@ footer{
     h1{
         font-size: 100%;
     }
-    body{
-        display: grid;
-        grid-template-columns: 5fr 1fr;
+    .body{
+        font-size: 4vw;
     }
-    body::-webkit-scrollbar{
+    .body::-webkit-scrollbar{
         width:0.8rem;
     }
-    #mellan{
-        height:50vh;
-        margin-top:200%;
+    .body #mellan{
+        height:80vh;
+        top:180%;
     }
     .navTitle a{
         color:rgb(35, 49, 245);
     }
-    body>nav{
+    .body>nav{
         display:none;
     }
+
+
     .navHållare{
+        font-size:3vw;
         display:grid;
+        grid-template-columns: 1fr 3fr;
+        grid-template-rows: 1fr 1fr 1fr 8fr;
     }
     .navItem:hover .navTitle{
         font-size: 100%;
     }
+
+
     header{
         position:static;
         width:100%;
-        grid-row:1;
     }
     .aboutList{
         opacity:1;
@@ -377,13 +409,12 @@ footer{
         top:30rem;
         display:flex;
         flex-direction: column;
-        grid-row: 2;
     }
     .multiple{
         display:flex;
         flex-direction: column;
     }
     footer{
-        grid-row: 3;
+        font-size: 2.5vw;
     }
 }
