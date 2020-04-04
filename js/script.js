@@ -55,8 +55,9 @@ function handleScrolling(){
 
 
 //Navbar som kommer in från sidan
-let navBarKnapp = document.getElementsByClassName("fa-bars");
+let navBarKnapp = document.getElementsByClassName("coverUp");
 let nav = document.getElementsByClassName("navHållare");
+let navInnehåll = document.getElementsByClassName("navLogga");
 let navBarUtvikt = false;
 
 document.body.addEventListener('click', function(event){
@@ -66,7 +67,8 @@ document.body.addEventListener('click', function(event){
     console.log(gränsFörUtvikning);
     if(navBarUtvikt){
         if(klickatX<=gränsFörUtvikning){
-            nav[0].style.left = "95vw";
+            navInnehåll[0].style.opacity = "0";
+            nav[0].style.left = "95%";
             navBarUtvikt = false;
         }
     }
@@ -75,9 +77,11 @@ document.body.addEventListener('click', function(event){
 
 navBarKnapp[0].addEventListener('click', ()=>{
     if(navBarUtvikt){
-        nav[0].style.left = "95vw";
+        navInnehåll[0].style.opacity = "0";
+        nav[0].style.left = "95%";
         navBarUtvikt = false;
     }else{
+        navInnehåll[0].style.opacity = "1";
         nav[0].style.left = "70vw";
         navBarUtvikt = true;
     }

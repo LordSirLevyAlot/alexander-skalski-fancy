@@ -46,11 +46,19 @@ h1, h2, h3{
     background-position: top;
 
 }
-.body #mellan{
-    height:120vh;
-    top:300%;
-    background-image: linear-gradient(to bottom, rgba(92, 79, 79, 0), rgb(53, 52, 52), rgb(53, 52, 52), rgb(53, 52, 52));
-    
+
+.mellan::after{
+    /*height:120vh;
+    top:300%;*/
+
+    display: block;
+    position: relative;
+    background-image: linear-gradient(to bottom, rgba(0,0,0,0), rgba(92, 79, 79, 0), rgb(53, 52, 52), rgb(53, 52, 52), rgb(53, 52, 52));
+    z-index:1;
+    margin-top:200vh;
+    height:50vh;
+    width: 100%;
+    content: '';
 }
 
 
@@ -300,7 +308,7 @@ footer{
     font-size: 3vw;
     position:relative;
     left:25%;
-    top:10%;
+    top:20%;
 }
 .coverUp{
     width:100%;
@@ -308,20 +316,24 @@ footer{
     grid-row: 3;
     position:relative;
     right:0;
-    top:20%;
+    top:500%;
     border-bottom-left-radius: 1rem;
     border-top-left-radius: 1rem;
     background-color:rgba(129, 126, 126, 0.877)
 }
 .navItemF{
     grid-column: 1;
-    height:97%;
+    height:100%;
     background-image: none;
     transition:none;
+    padding-right:2rem;
     transition-duration: 0s;
 }
 .navLogga{
     grid-column: 2;
+    opacity:0;
+    background-image: linear-gradient(to top, rgba(241, 238, 238, 0.8), rgba(54, 52, 52, 1));
+    transition: opacity 1s;
 }
 
 .navItemF:hover{
@@ -389,14 +401,25 @@ footer{
     .navHållare{
         font-size:3vw;
         display:grid;
-        grid-template-columns: 1fr 3fr;
+        grid-template-columns: 2fr 3fr;
         grid-template-rows: 1fr 1fr 1fr 8fr;
     }
     .navItem:hover .navTitle{
         font-size: 100%;
     }
-
-
+    .navTitle{
+        font-size: 5vw;
+    }
+    .aboutList{
+        list-style: none;
+        padding-left: 0;
+    }
+    .aboutList a{
+        font-size: 150%;
+    }
+    li{
+        margin:1rem;
+    }
     header{
         position:static;
         width:100%;
