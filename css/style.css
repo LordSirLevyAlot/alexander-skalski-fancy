@@ -96,7 +96,7 @@ nav{
 .navItem{
     position:sticky;
     text-align: center;
-    height:5rem;
+    height:5vw;
     padding-top:3%;
     background-image: linear-gradient(to bottom, rgba(241, 238, 238, 0.8), rgba(54, 52, 52, 1));
     transition:all 1s;
@@ -104,7 +104,7 @@ nav{
 .navItem:hover{
     border-bottom-right-radius: 1rem;
     border-bottom-left-radius: 1rem;
-    height:12rem;
+    height:13vw;
     padding-top:7%;
     color:white;
     background-image: linear-gradient(to bottom, rgba(241, 238, 238, 0.8), rgb(27, 26, 26));
@@ -132,7 +132,7 @@ nav{
 
 @keyframes opacitetEtt{
     from{opacity:0;}
-    to{opacity:1}
+    to{opacity:1;}
 }
 @keyframes opacitetNoll{
     0%{opacity:1;}
@@ -263,12 +263,12 @@ section{
 footer{
     background-image:linear-gradient(to bottom, rgba(241, 238, 238, 0.8), rgb(27, 26, 26));
     display:grid;
-    grid-template-columns: repeat(2, 1fr) 2fr;
+    grid-template-columns: repeat(5, 1fr);
     grid-template-rows:1fr;
     color:white;
     height:auto;
     padding:1rem;
-    font-size: 1.8vw;
+    font-size: 1.5vw;
     margin-top: auto;
     position:relative;
     bottom:0;
@@ -278,16 +278,19 @@ footer{
 footer ul{
     list-style-position: inside;
 }
-
-.foldOut{
-    position:absolute;
-    margin-left:10vw;
-    padding:2rem;
-    display:none;
-    opacity:0;
-    transition: opacity 0.5s;
-
+footer #länkRuta{
+    margin-right:5%;
+    padding-left:5%;
+    border-style:dashed;
 }
+footer #länkRuta ul li{
+    display:none;
+}
+
+
+
+
+
 
 
 
@@ -327,7 +330,7 @@ footer ul{
     display:none;
     height:100%;
     width:30vw;
-    left:95vw;
+    left:92vw;
     z-index:51;
     position:fixed;
     top:0;
@@ -337,13 +340,16 @@ footer ul{
     padding-left:1rem;
     grid-template-columns:1fr;
     grid-column:2;
-    grid-row: 2/5;
+    grid-row: 1/5;
     height:100%;
     width:100%;
-    background-image: linear-gradient(to bottom, rgba(241, 238, 238, 0.8), rgba(54, 52, 52, 1));
+    background-image: linear-gradient(to bottom, rgba(241, 238, 238, 0.9), rgba(54, 52, 52, 1));
+}
+.sekundärNav img{
+    width:100%;
 }
 .fa-bars{
-    font-size: 3vw;
+    font-size: 5vw;
     position:relative;
     left:25%;
     top:20%;
@@ -353,7 +359,6 @@ footer ul{
     grid-column: 1;
     grid-row: 3;
     position:relative;
-    right:0;
     top:500%;
     border-bottom-left-radius: 1rem;
     border-top-left-radius: 1rem;

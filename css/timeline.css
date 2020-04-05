@@ -1,14 +1,13 @@
 body{
     overflow: hidden;
-    background-color: tomato;
-    position:absolute;
+   /* background-color: tomato;
+    position:absolute;*/
     font-size: 2rem;
 }
 
 
 main{
     display:block;
-    height:170vh;
     position: fixed;
 }
 .ikon{
@@ -18,16 +17,34 @@ main{
 }
 
 .navHållare{
+    font-size:3vw;
+    display:grid;
+    grid-template-columns: 2fr 3fr;
+    grid-template-rows: 1fr 1fr 1fr 8fr;
+    height:100vh
+}
+.navTitle{
+    font-size: 2vw;
+}
+.aboutList{
+    opacity:1;
+    list-style: none;
+    padding-left: 0;
+    font-size: 0.1vw;
+}
+/*
+
+.navHållare{
     display:grid;
     grid-template-rows: 1fr 10fr;
-    height:100vh;
+    /*;
     width:20%;
-    left:95vw;
-    z-index:51;
+    left:80vw;
+    z-index:55;
     top:0;
     position:relative;
     transition:left 1s;
-}
+}/*
 nav{
     display:grid;
     padding-left:1rem;
@@ -37,8 +54,8 @@ nav{
     height:100%;
     background-image: linear-gradient(to bottom, rgba(241, 238, 238, 0.8), rgba(54, 52, 52, 1));
 
-}
-
+}*/
+/*
 .fa-bars{
     font-size: 3vw;
     position:relative;
@@ -82,7 +99,7 @@ nav{
 
 .navTitle a{
     color:rgb(35, 49, 245);
-}
+}*/
 
 
 
@@ -141,6 +158,11 @@ img{
 }
 footer{
     height:100%;
+    text-align: left;
+    border:none;
+}
+footer p{
+    border:none;
 }
 
 
