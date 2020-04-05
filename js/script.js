@@ -86,3 +86,56 @@ navBarKnapp[0].addEventListener('click', ()=>{
         navBarUtvikt = true;
     }
 })
+
+
+
+
+
+
+
+
+
+
+
+
+
+//Footer
+let about = document.getElementById("about");
+let business = document.getElementById("business");
+let foldOuts = document.getElementsByClassName("foldOut");
+let område = document.getElementById("footerList");
+about.addEventListener('mouseover', ()=>{setTimeout(ShowAbout, 10)});
+business.addEventListener('mouseover', ()=>{setTimeout(ShowBusiness, 10)});
+
+
+
+område.addEventListener('mouseleave', ()=>{
+    clearInterval(ShowAbout);
+    clearInterval(ShowBusiness);
+    foldOuts[0].style.display = "none";
+    foldOuts[0].style.opacity = "0";
+
+    foldOuts[1].style.display = "none";
+    foldOuts[1].style.opacity = "0";
+});
+
+
+function ShowAbout(){
+    clearInterval(ShowBusiness);
+
+    setTimeout(()=>foldOuts[1].style.display = "none", 500);
+    foldOuts[1].style.opacity = "0";
+
+    setTimeout(()=>foldOuts[0].style.opacity = "1", 500);
+    foldOuts[0].style.display = "block";
+}
+
+function ShowBusiness(){
+    clearInterval(ShowAbout);
+
+    setTimeout(()=>foldOuts[0].style.display = "none", 500);
+    foldOuts[0].style.opacity = "0";
+
+    setTimeout(()=>foldOuts[1].style.opacity = "1", 500);
+    foldOuts[1].style.display = "block";
+}

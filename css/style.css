@@ -16,7 +16,7 @@ html{
     border-radius:0.25rem;
 }
 .body{
-    background-color: rgb(53, 52, 52);
+    background-color: rgba(53, 52, 52);
     font-size: 1.8vw;
     /*font-size:2vw;*/
     font-family: 'EB Garamond', serif;
@@ -36,8 +36,7 @@ h1, h2, h3{
 .background{
     overflow: hidden;
     z-index:-1;
-    width:100vw;
-
+    width:100%;
     position:absolute;
     transform-style:preserve-3d;
     transform: translateZ(-1px) scale(2);
@@ -46,7 +45,12 @@ h1, h2, h3{
     background-position: top;
 
 }
-
+.background img{
+    width:100%;
+}
+.mellan{
+    margin-bottom:1rem;
+}
 .mellan::after{
     /*height:120vh;
     top:300%;*/
@@ -54,8 +58,8 @@ h1, h2, h3{
     display: block;
     position: relative;
     background-image: linear-gradient(to bottom, rgba(0,0,0,0), rgba(92, 79, 79, 0), rgb(53, 52, 52), rgb(53, 52, 52), rgb(53, 52, 52));
-    z-index:1;
-    margin-top:200vh;
+    
+    bottom:50vh;
     height:50vh;
     width: 100%;
     content: '';
@@ -240,10 +244,10 @@ section{
 footer{
     background-image:linear-gradient(to bottom, rgba(241, 238, 238, 0.8), rgb(27, 26, 26));
     display:grid;
-    grid-template-columns: repeat(3, 1fr);
-    height: 10rem;
+    grid-template-columns: repeat(2, 1fr) 2fr;
+    grid-template-rows:1fr;
     color:white;
-    height:fit-content;
+    height:auto;
     padding:1rem;
     font-size: 1.8vw;
     margin-top: auto;
@@ -252,6 +256,21 @@ footer{
     left:0;
     right:0;
 }
+footer ul{
+    list-style-position: inside;
+}
+
+.foldOut{
+    position:absolute;
+    margin-left:10vw;
+    padding:2rem;
+    display:none;
+    opacity:0;
+    transition: opacity 0.5s;
+
+}
+
+
 
 
 #referenceWrapper #batmanReference{

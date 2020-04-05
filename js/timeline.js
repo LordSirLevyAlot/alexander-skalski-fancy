@@ -39,22 +39,6 @@ navBarKnapp[0].addEventListener('click', ()=>{
     }
 })
 
-/*
-let fortsätt= document.getElementsByClassName("fa-chevron-down");
-let fårGåVidare = false;
-for (let index = 0; index < fortsätt.length; index++) {
-    fortsätt[index].addEventListener('click', ()=>{
-        if(fårGåVidare===false){
-            return;
-        }
-        counter++;
-        längdFrånToppen = 100;
-        fårGåVidare=false;
-    });
-    
-}
-*/
-
 function påbörjaTimeline(){/*
     navbar.style.display= "none";
     header.style.display =  "none";
@@ -67,7 +51,7 @@ let scrollJusterare = 10;
 
 //Hjul input
 window.addEventListener('wheel', () =>{
-    console.log("Scrollar");
+    //console.log("Scrollar");
     const delta = Math.sign(event.deltaY) * scrollJusterare;
     Scrollar(delta);
 });
@@ -98,128 +82,98 @@ document.body.addEventListener('touchmove', function(event){
     senasteTouch = event.changedTouches[0].screenY;
 })
 
-
 let fårFortsätta = true;
 function Scrollar(delta){
-    /*if(!fårFortsätta){
+    if(!fårFortsätta){
         return;
-    }*/
-
+    };
     längdFrånToppen = längdFrånToppen - delta;
-    console.log(längdFrånToppen);
-/*
+    //console.log(längdFrånToppen);
 
-    console.log(counter);
-    console.log(längdFrånToppen);
-
-    if(längdFrånToppen >= 100 || längdFrånToppen <= 0){
-        slides[counter].style.top = längdFrånToppen + "vh";
-    }
-    if(längdFrånToppen >= 100){
-        slides[counter-1].style.opacity = "1";
-        längdFrånToppen=0;
-        if(counter!=1)
-        {
-            counter--;
-        }else{
-            längdFrånToppen += delta
-        }
-
-    }else if(längdFrånToppen <= 0){
-        slides[counter-1].style.opacity = "0";
-        längdFrånToppen = 100;
-        if(counter!=slides.length-1)
-        {
-            counter++;
-        }else{
-            längdFrånToppen += delta
-        }
-
-    }*/
     //console.log(längdFrånToppen + "vh   " + delta);
 
     //Scrollar uppåt
     if(längdFrånToppen<=100 && delta<0){
-        scrollJusterare = 10;
+        console.log("Scrollar uppåt");
         if(längdFrånToppen>50){
             //console.log("Active cheat");
             längdFrånToppen = 100;
             slides[counter].style.top = "100vh";
+            slides[counter-1].style.opacity = "1";
         }else{
             slides[counter].style.top = längdFrånToppen + "vh";
             slides[counter-1].style.opacity = 0.01*längdFrånToppen;
         }
     }
     else if(längdFrånToppen>=minHöjd && delta>0){//Scrollar nedåt     
+        console.log("Scrollar nedåt");
+        //console.log(counter);
         if(längdFrånToppen<50){
             //console.log("beee");
             längdFrånToppen = minHöjd;
             slides[counter].style.top = längdFrånToppen + "vh";
+            slides[counter-1].style.opacity = "0";
 
         }else{
-            slides[counter-1].style.opacity = 0.01*längdFrånToppen;
             slides[counter].style.top = längdFrånToppen + "vh";
+            slides[counter-1].style.opacity = 0.01*längdFrånToppen;
         }
     }
     else{//Nått en gräns och man inte får scrolla åt det hållet
-        fårFortsätta = true;
-        längdFrånToppen = längdFrånToppen + delta;
+        //längdFrånToppen = längdFrånToppen + delta;
+        console.log("Gränsat");
+        fårFortsätta = false;
         if(längdFrånToppen<=minHöjd){
+            //console.log(counter);
             slides[counter-1].style.opacity = "0";
+            console.log(längdFrånToppen+ "   " + counter + "  whoops");
             if(counter != slides.length-1){
-                //console.log("BYTER NEDÅT");
-                counter++;
+                setTimeout(NästaSlide, 500);
+                console.log("BYTER NEDÅT");
                 längdFrånToppen = 100;
-            }
+            }else{
+                fårFortsätta = true;
+            };
+
         }else if(längdFrånToppen>=100 && counter != 1){
-            //console.log("BYTER UPPÅT");
-            //console.log("kommer in som " + counter);
-            counter--;
-
+            setTimeout(FöregåendeSlide, 500);
+            console.log("BYTER UPPÅT");
             längdFrånToppen = minHöjd;
+        }else{
+            console.log(längdFrånToppen+ "   " + counter);
+            fårFortsätta = true;
         }
-
-
-        /*while(slides[counter].style.top != 0 || slides[counter].style.top != 100){
-            console.log(slides[counter].style.top + "joojojo");
-    
-        };*/
-    }
+        längdFrånToppen = längdFrånToppen + delta;
+    };
     if(slides[counter].style.top == "100vh"){
         slides[counter-1].style.opacity = "1";
-        //fårFortsätta = true;
     }else if(slides[counter].style.top == minHöjd + "vh"){
         slides[counter-1].style.opacity = "0";
-        //fårFortsätta = true;
     }
-
-
-
-   /* if(fårFortsätta){
-        fårFortsätta = false;
-        console.log("TID:");
-        let tidEtt = new Date();
-        console.log(tidEtt.getTime());
-
-        let tidTvå = new Date();
-        console.log(tidTvå.getTime());
-
-        while(tidEtt.getTime()+200 > tidTvå.getTime()){
-            console.log(tidEtt.getMilliseconds() + "   " + tidTvå.getMilliseconds());
-            console.log("HELLO");
-            tidTvå = new Date();
-        };
-        console.log("Free from that wretched prison");
-        fårFortsätta = true;
-    }*/
 }
 
-//Funktion som sänker scrollJusterare en halv sekund och sen höjer den igen
 
-async function PausaScroll(){
-    scrollJusterare = 1;
+
+function BytSlide(){
+    if(längdFrånToppen<=minHöjd){
+        console.log("minskar");
+            counter--;
+    }else if(längdFrånToppen>=100){
+        console.log("ökar");
+        counter++;
+    }else{
+        console.log("wtf");
+    }
 }
 
-async function sleep(ms) {
-    return new Promise(resolve => setTimeout(resolve, ms));
+function NästaSlide(){
+    counter++;
+    console.log("Hej från nästa slide");
+    fårFortsätta = true;
+}
+
+function FöregåendeSlide(){
+    counter--;
+    console.log("Hej från föregående slide");
+    fårFortsätta = true;
 }
