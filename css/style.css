@@ -113,16 +113,35 @@ nav{
 .aboutList{
     text-align: start;
     opacity:0;
-    font-size: 0.1rem;
-    transition: opacity 1s, font-size 1s;
+    transition: all 1s;
     list-style-position: inside;
     padding-left:3rem;
-  
+    animation-name:opacitetNoll;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-fill-mode: forwards;
 }
 .navItem:hover .aboutList{
-    opacity:1;
-    font-size: inherit;
+    animation-name:opacitetEtt;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-fill-mode: forwards;
+    animation-delay: 0.5s;
+    animation-fill-mode: forwards;
 }
+
+@keyframes opacitetEtt{
+    from{opacity:0;}
+    to{opacity:1}
+}
+@keyframes opacitetNoll{
+    0%{opacity:1;}
+    90%{opacity:0;font-size: 1rem;}
+    100%{font-size: inherit;}
+}
+
+
+
 .fas{
     font-size: 1.5rem;
     transition: transform 1s;
@@ -292,7 +311,7 @@ footer ul{
     80%{transform:   translateX(100%)  translateY(-150%)}
     100%{transform:  translateX(-100%) translateY(-700%)}
     
-}   
+}   /*
 @keyframes referensRotation{
     0%{transform:   rotate(-20deg) }
     20%{transform:  rotate(-20deg) }

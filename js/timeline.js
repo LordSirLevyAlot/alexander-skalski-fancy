@@ -150,6 +150,9 @@ function Scrollar(delta){
     }else if(slides[counter].style.top == minHöjd + "vh"){
         slides[counter-1].style.opacity = "0";
     }
+    for (let index = 0; index < counter; index++) {
+        slides[index].style.top = minHöjd + "vh";  
+    };
 }
 
 
