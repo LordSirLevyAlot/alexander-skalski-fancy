@@ -1,25 +1,28 @@
+/*STORT OCH GENERELLT*/
 *{
     margin:0;
     padding:0;
 }
 html{
     overflow:hidden;
+    font-family: 'EB Garamond', serif;
 }
-.body::-webkit-scrollbar{
-    width:1rem;
-}
-.body::-webkit-scrollbar-track{
-    background: rgb(40,40,40);
-}
-.body::-webkit-scrollbar-thumb{
-    background: white;
-    border-radius:0.25rem;
-}
-.body{
+body{
     background-color: rgba(53, 52, 52);
     font-size: 1.8vw;
-    /*font-size:2vw;*/
-    font-family: 'EB Garamond', serif;
+}
+.huvudInnehåll::-webkit-scrollbar{
+    width:1rem;
+}
+.huvudInnehåll::-webkit-scrollbar-track{
+    background: rgb(40,40,40);
+}
+.huvudInnehåll::-webkit-scrollbar-thumb{
+    background: white;
+    border-radius:0.1rem;
+}
+.huvudInnehåll{
+    background-color: rgba(53, 52, 52);
     perspective:1px;
     transform-style:preserve-3d;
     overflow-y: auto;
@@ -31,8 +34,6 @@ html{
 h1, h2, h3{
     font-family: 'Bebas Neue', cursive;
 }
-
-
 .background{
     overflow: hidden;
     z-index:-1;
@@ -43,30 +44,25 @@ h1, h2, h3{
     box-sizing: border-box;
     vertical-align: top;
     background-position: top;
-
 }
 .background img{
     width:100%;
 }
-.mellan{
+.bakgrundsHållare{
     margin-bottom:1rem;
 }
-.mellan::after{
-    /*height:120vh;
-    top:300%;*/
-
+.bakgrundsHållare::after{
     display: block;
     position: relative;
     background-image: linear-gradient(to bottom, rgba(0,0,0,0), rgba(92, 79, 79, 0), rgb(53, 52, 52), rgb(53, 52, 52), rgb(53, 52, 52));
-    
     bottom:50vh;
     height:50vh;
     width: 100%;
     content: '';
 }
+/**/
 
-
-
+/*GENERELLT*/
 header{
     background-color:rgba(241, 238, 238, 0.8);
     position:relative;
@@ -74,7 +70,9 @@ header{
     display:flex;
     flex-direction: row;
 }
-
+header img{
+    width:10vw;
+}
 a{
     color:#dbdb94;
     transition:margin 1s;
@@ -82,6 +80,24 @@ a{
 a:hover{
     color:#dada68;
 }
+main{
+    display:grid;
+    grid-template-columns: repeat(5, 1fr);
+    top:20rem;
+}
+section{
+    border-radius: 1rem;
+    text-align:center;
+    padding: 10%;
+    margin:10%;
+    opacity:0;
+    transition:opacity 1s, background-color 0.5s;
+}
+img{
+    width:100%;
+    height: auto;
+}
+/**/
 
 /*Standard nav saker*/
 nav{
@@ -109,11 +125,9 @@ nav{
     color:white;
     background-image: linear-gradient(to bottom, rgba(241, 238, 238, 0.8), rgb(27, 26, 26));
 }
-
-.aboutList{
+.navLista{
     text-align: start;
     opacity:0;
-    transition: all 1s;
     list-style-position: inside;
     padding-left:3rem;
     animation-name:opacitetNoll;
@@ -121,15 +135,33 @@ nav{
     animation-timing-function: linear;
     animation-fill-mode: forwards;
 }
-.navItem:hover .aboutList{
+.navItem:hover .navLista{
     animation-name:opacitetEtt;
     animation-duration: 0.5s;
     animation-timing-function: linear;
     animation-fill-mode: forwards;
     animation-delay: 0.5s;
-    animation-fill-mode: forwards;
 }
-
+.fas{
+    font-size: 1.5rem;
+    transition: transform 1s;
+}
+.navItem:hover .navTitel .fas{
+    transform:rotate(180deg);
+}
+.navTitel{
+    transition:font-size 1s;
+}
+        /*Home ska bli större än de andra*/
+.navItem:nth-child(1):hover .navTitel{
+    font-size: 200%;
+}
+.navItem:hover .navTitel{
+    font-size: 120%;
+}
+li>a:hover{
+    margin-left:1rem;
+}
 @keyframes opacitetEtt{
     from{opacity:0;}
     to{opacity:1;}
@@ -139,50 +171,10 @@ nav{
     90%{opacity:0;font-size: 1rem;}
     100%{font-size: inherit;}
 }
-
-
-
-.fas{
-    font-size: 1.5rem;
-    transition: transform 1s;
-}
-.navItem:hover .navTitle .fas{
-    transform:rotate(180deg);
-}
-.navTitle{
-    font-size:100%;
-    transition:font-size 1s;
-}
-/*Home ska bli större än de andra*/
-.navItem:nth-child(1):hover .navTitle{
-    font-size: 200%;
-}
-.navItem:hover .navTitle{
-    font-size: 120%;
-}
-
-li>a:hover{
-    margin-left:1rem;
-}
 /**/
 
 
-main{
-    display:grid;
-    grid-template-columns: repeat(5, 1fr);
-    top:20rem;
-}
-section{
-    border-radius: 1rem;
-    text-align:center;
-    padding: 10%;
-    margin:10%;
-    opacity:0;
-    transition:opacity 1s, background-color 0.5s;
-    /*-ms-grid-column-span: 2;*/
-}
-
-
+/*FÄRGER FÖR SECTIONS*/
 .dark{
     background-color: rgba(0, 0, 0, 0.8);
     color:white;
@@ -199,13 +191,14 @@ section{
 .gray{
     background-color: rgba(169, 169, 169, 0.8);
     color:white;
-    /*text-shadow: 2px 2px 2px white;*/
 }
 .gray:hover{
     background-color: rgba(169, 169, 169, 0.9);
 }
+/**/
 
 
+/*PLACERINGAR OCH DEFINIERINGAR FÖR SECTIONS*/
 .left{
     grid-column:1/3;
 }
@@ -228,10 +221,6 @@ section{
 .image{
     padding:3%;
 }
-.image img{
-    width:100%;
-    height:100%;
-}
 .multiple{
     display:grid;
     grid-template-columns: 1fr 2fr;
@@ -239,7 +228,6 @@ section{
 .unsaturate{
     filter:saturate(0);
 }
-
 .multiple *{
     padding:5%;
     border-style: solid;
@@ -255,21 +243,18 @@ section{
     flex-direction: row;
     align-items: center;
 }
+/**/
 
 
-
-
-
+/*FOOTER*/
 footer{
     background-image:linear-gradient(to bottom, rgba(241, 238, 238, 0.8), rgb(27, 26, 26));
     display:grid;
     grid-template-columns: repeat(5, 1fr);
     grid-template-rows:1fr;
     color:white;
-    height:auto;
     padding:1rem;
     font-size: 1.5vw;
-    margin-top: auto;
     position:relative;
     bottom:0;
     left:0;
@@ -277,35 +262,54 @@ footer{
 }
 footer ul{
     list-style-position: inside;
+    height:100%;
 }
 footer #länkRuta{
     margin-right:5%;
     padding-left:5%;
     border-style:dashed;
 }
+footer a{
+    color:#030303;
+}
+footer img{
+    height:100%;
+    width:auto;
+}
 footer #länkRuta ul li{
     display:none;
 }
+/**/
 
 
-
-
-
-
-
-
-
+/*REFERENS TILL LÄDERLAPPEN*/
 #referenceWrapper #batmanReference{
     transform:rotate(-20deg);
-    animation: referensRotation 5s ease-out;
+    /*animation: referensRotation 5s ease-out;
+    animation-fill-mode: forwards;*/
+
+
+    /*animation-name:referensRotation;*/
+    animation-duration: 5s;
+    animation-timing-function: ease-out;
+    animation-fill-mode: forwards;
+
 }
 #referenceWrapper{
+    display:none;
     transform:translateX(300%);
-    position:fixed;
+    position:absolute;
     margin:0;
-    bottom:-300%;
-    animation: referensRörelse 5s linear;
-}/* Ska bara triggas när användaren nåt botten av sidan
+    bottom:-20%;
+    /*animation: referensRörelse 5s linear; 
+    animation-fill-mode: forwards;*/
+
+    /*animation-name:referensRörelse;*/
+    animation-duration: 5s;
+    animation-timing-function: linear;
+    animation-fill-mode: forwards;
+
+}/* Ska bara triggas när användaren nåt botten av sidan*/
 @keyframes referensRörelse{
     0%{transform:    translateX(300%)  translateY(-20%)}
     20%{transform:   translateX(200%)  translateY(-50%)}
@@ -314,7 +318,7 @@ footer #länkRuta ul li{
     80%{transform:   translateX(100%)  translateY(-150%)}
     100%{transform:  translateX(-100%) translateY(-700%)}
     
-}   /*
+}   
 @keyframes referensRotation{
     0%{transform:   rotate(-20deg) }
     20%{transform:  rotate(-20deg) }
@@ -322,19 +326,22 @@ footer #länkRuta ul li{
     60%{transform:  rotate(30deg)  }
     80%{transform:  rotate(-10deg) }
     100%{transform: rotate(-40deg) }
-}*/
+}
+/**/
 
-
-/*Navbar för mindre upplösningar*/
+/*NAVBAR FÖR MINDRE UPPLÖSNINGAR OCH FOUNDER.HTML*/
 .navHållare{
     display:none;
-    height:100%;
-    width:30vw;
-    left:92vw;
+    height:100vh;
+    width:fit-content;
     z-index:51;
     position:fixed;
     top:0;
     transition:left 1s;
+    font-size:2vw;
+    left:100vw;
+    grid-template-columns: 1fr 3fr;
+    grid-template-rows: 1fr 1fr 1fr 8fr;
 }
 .sekundärNav{
     padding-left:1rem;
@@ -346,7 +353,9 @@ footer #länkRuta ul li{
     background-image: linear-gradient(to bottom, rgba(241, 238, 238, 0.9), rgba(54, 52, 52, 1));
 }
 .sekundärNav img{
+    max-width: 18vw;
     width:100%;
+    height: auto;
 }
 .fa-bars{
     font-size: 5vw;
@@ -354,7 +363,7 @@ footer #länkRuta ul li{
     left:25%;
     top:20%;
 }
-.coverUp{
+.navknappHållare{
     width:100%;
     grid-column: 1;
     grid-row: 3;
@@ -364,7 +373,7 @@ footer #länkRuta ul li{
     border-top-left-radius: 1rem;
     background-color:rgba(129, 126, 126, 0.877)
 }
-.navItemF{
+.navItemTvå{
     grid-column: 1;
     height:100%;
     background-image: none;
@@ -378,15 +387,14 @@ footer #länkRuta ul li{
     background-image: linear-gradient(to top, rgba(241, 238, 238, 0.8), rgba(54, 52, 52, 1));
     transition: opacity 1s;
 }
-
-.navItemF:hover{
+.navItemTvå:hover{
     height:100%;
     border-bottom-right-radius: 0;
     border-bottom-left-radius: 0;
     padding-top:0;
 
 }
-.navItemF:nth-child(1) .navTitle{
+.navItemTvå:nth-child(1) .navTitel{
     font-size: 220%;
 }
 /**/
@@ -395,11 +403,13 @@ footer #länkRuta ul li{
 
 
 /*CEO*/
-.bruce{
-    width:100%;
-}
 
-/*Joblistings*/
+.bredBild{
+    width:80%;
+}
+/**/
+
+/*JOBLISTINGS*/
 .joblistings{
     background-color: rgba(102, 116, 243, 0.8);
     list-style-position: inside;
@@ -415,61 +425,62 @@ footer #länkRuta ul li{
 .citat{
     font-size: 150%;
 }
+/**/
+
+
+/*404*/
+.fourOfour{
+    color:white;
+    font-size: 3rem;
+    padding: 10vw;
+    width:fit-content;
+}
+.fourOfour i{
+    transition:padding 2s;
+}
+.fourOfour i:hover{
+    padding-left:2rem;
+}
+
 
 @media (max-width:1000px){
     *{
-        font-size: 90%;
+        font-size: 120%;
     }
-    h1{
-        font-size: 100%;
+    header img{
+        width:auto;
     }
-    .body{
-        font-size: 4vw;
+    .huvudInnehåll::-webkit-scrollbar{
+        width:0.6rem;
     }
-    .body::-webkit-scrollbar{
-        width:0.8rem;
-    }
-    .body #mellan{
-        height:80vh;
-        top:180%;
-    }
-    .navTitle a{
+    .navTitel a{
         color:rgb(35, 49, 245);
     }
-    .body>nav{
+    nav{
         display:none;
     }
-
-
     .navHållare{
-        font-size:3vw;
         display:grid;
-        grid-template-columns: 2fr 3fr;
-        grid-template-rows: 1fr 1fr 1fr 8fr;
     }
-    .navItem:hover .navTitle{
-        font-size: 100%;
+    .sekundärNav{
+        display:grid;
     }
-    .navTitle{
-        font-size: 5vw;
+    .navTitel a:hover{
+        margin-left: 1rem;
     }
-    .aboutList{
+    .navTitel{
+        font-size: 3rem;
+    }
+    .navLista{
+        opacity:1;
         list-style: none;
         padding-left: 0;
     }
-    .aboutList a{
-        font-size: 150%;
+    .navLista a{
+        font-size: 2rem;
     }
     li{
         margin:1rem;
-    }
-    header{
-        position:static;
-        width:100%;
-    }
-    .aboutList{
-        opacity:1;
-        font-size: inherit;
     }
     main{
         top:30rem;
@@ -481,6 +492,14 @@ footer #länkRuta ul li{
         flex-direction: column;
     }
     footer{
-        font-size: 2.5vw;
+        font-size: 1rem;
+    }
+    footer li{
+        margin: 0;
+        font-size: 70%;;
+    }
+    footer img{
+        width:100%;
+        height:auto;
     }
 }

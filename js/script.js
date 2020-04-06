@@ -1,72 +1,64 @@
-document.addEventListener('wheel', handleScrolling);
-window.addEventListener('resize scroll', handleScrolling);
-
+let sectioner = document.querySelectorAll("section");
+let navBarKnapp = document.getElementsByClassName("navknappHållare");
+let nav = document.getElementsByClassName("navHållare");
+let navBarUtvikt = false;
 let senasteTouch = 1000;
-document.body.addEventListener('touchmove', handleScrolling);
-
-
-    
-//Skulle vilja targeta alla element i första raden av gridet
-let saker = document.querySelectorAll("section");
-window.addEventListener('load', ()=>{
-    saker[0].style.opacity = "1";
-})
-
-function handleScrolling(){
-    let höjd = document.body.scrollHeight;
-    let höjdAvSkärm = (window.innerHeight || document.documentElement.clientWidth);
-
-    for (let index = 0; index < saker.length; index++) {
-
-        let infoOmElementet = saker[index].getBoundingClientRect();
-        if((infoOmElementet.top + infoOmElementet.height*0.5) >= 0 && infoOmElementet.bottom <= (höjdAvSkärm + infoOmElementet.height*0.5))
-        {
-            saker[index].style.opacity = "1";
-        }else
-        {
-            saker[index].style.opacity = "0";
-        }
-    }
-
-
-}
-
-//let scrollat = window.scrollY;
-
-
 
 
 //Navbar som kommer in från sidan
-let navBarKnapp = document.getElementsByClassName("coverUp");
-let nav = document.getElementsByClassName("navHållare");
-let navInnehåll = document.getElementsByClassName("navLogga");
-let navBarUtvikt = false;
+window.onload = function(){
+    nav[0].style.left = 100-((navBarKnapp[0].getBoundingClientRect().width/window.innerWidth)*100) + "%";
+    KollaReferens();
+};
+window.onresize = function(){
+    nav[0].style.left = 100-((navBarKnapp[0].getBoundingClientRect().width/window.innerWidth)*100) + "%";
+};
 
 document.body.addEventListener('click', function(event){
     let klickatX = event.clientX;
-    let gränsFörUtvikning = 0.8*window.innerWidth;
-    console.log(klickatX);
-    console.log(gränsFörUtvikning);
+    let gränsFörUtvikning = document.documentElement.clientWidth - nav[0].getBoundingClientRect().width*0.75;
     if(navBarUtvikt){
         if(klickatX<=gränsFörUtvikning){
-            //navInnehåll[0].style.opacity = "0";
-            nav[0].style.left = "95%";
+            nav[0].style.left = 100-((navBarKnapp[0].getBoundingClientRect().width/window.innerWidth)*100) + "%";
             navBarUtvikt = false;
         }
     }
-
 });
 
 navBarKnapp[0].addEventListener('click', ()=>{
     if(navBarUtvikt){
-        //navInnehåll[0].style.opacity = "0";
-        nav[0].style.left = "95%";
+        nav[0].style.left = 100-((navBarKnapp[0].getBoundingClientRect().width/window.innerWidth)*100) + "%";
         navBarUtvikt = false;
     }else{
-        //navInnehåll[0].style.opacity = "1";
-        nav[0].style.left = "70vw";
+        nav[0].style.left = 100-nav[0].getBoundingClientRect().width/window.innerWidth*100 + "%";
         navBarUtvikt = true;
     }
+});
+
+
+//SCROLL FUNKTIONER
+document.addEventListener('wheel', handleScrolling);
+document.body.addEventListener('touchmove', handleScrolling);
+
+function handleScrolling(){
+    let höjdAvSkärm = (window.innerHeight || document.documentElement.clientWidth);
+
+    for (let index = 0; index < sectioner.length; index++) {
+
+        let infoOmElementet = sectioner[index].getBoundingClientRect();
+        if((infoOmElementet.top + infoOmElementet.height*0.5) >= 0 && infoOmElementet.bottom <= (höjdAvSkärm + infoOmElementet.height*0.5))
+        {
+            sectioner[index].style.opacity = "1";
+        }else
+        {
+            sectioner[index].style.opacity = "0";
+        };
+    };
+}
+
+//Ge användaren lite innehåll på en gång
+window.addEventListener('load', ()=>{
+    sectioner[0].style.opacity = "1";
 })
 
 
@@ -112,3 +104,17 @@ område.addEventListener('mouseleave', ()=>{
         länkHållare[index].style.display = "none";
     };
 });
+
+
+
+//LÄDERLAPPEN REFERENS
+let referens = document.getElementById("referenceWrapper");
+function KollaReferens(){
+    let random = Math.floor(Math.random()*50);
+    console.log(random);
+    if(random >=40){
+        referens.style.display="block";
+        referens.style.animationName = "referensRörelse";
+        referens.children[0].style.animationName = "referensRotation";
+    }
+}
